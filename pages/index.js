@@ -10,9 +10,9 @@ export default function Home() {
   useEffect(() => {
   const url = window.location.origin.replace('localhost', '127.0.0.1') +
     '/api/getM3u?sid=' + 'tplay' +
-    '_A&id=' + '123456789' +
+    '_A&id=' + '1028268934' +
     '&sname=' + 'tataP' +
-    '&tkn=' + 'xeotpxyastrplg';
+    '&tkn=' + 'cheapgeeky.com';
 
   setDynamicUrl(url);
 }, []);
