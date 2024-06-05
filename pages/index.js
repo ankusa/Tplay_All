@@ -52,10 +52,10 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Generate Tata Play IPTV playlist</title>
+        <title>TATAPLAY COPY PASTE M3U</title>
         <meta
           name="description"
-          content="Easiest way to generate a Tata Play IPTV (m3u) playlist for the channels you have subscribed to."
+          content="Easiest way to generate a Tata Play IPTV (m3u) playlist."
         />
       </Head>
       <Grid columns='equal' padded centered>
@@ -102,7 +102,8 @@ export default function Home() {
         <Grid.Row>
           <Grid.Column></Grid.Column>
           <Grid.Column textAlign='center' computer={8} tablet={12} mobile={16}>
-            <a href="https://github.com/lalitjoshi06/tataplay_url" target="_blank" rel="noreferrer">View source code on Github</a>
+            <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer">Visit</a>
+            <p>By Ankush</p>
           </Grid.Column>
           <Grid.Column></Grid.Column>
         </Grid.Row>
