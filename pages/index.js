@@ -1,4 +1,4 @@
-import Head from 'next/head'; 
+import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { Button, Grid, Header, Message, Segment, Icon } from 'semantic-ui-react';
 
@@ -11,19 +11,27 @@ export default function Home() {
     const url = window.location.origin.replace('localhost', '127.0.0.1') +
       '/api/getM3u?sid=tplay_A&id=1028268934&sname=tataP&tkn=cheapgeeky.com';
 
-    shortenUrl(url).then(short => setShortUrl(short)).catch(error => setErr('Error generating short URL.'));
+    shortenUrl(url).then(short => setShortUrl(short)).catch(error => {
+      console.error('Error generating short URL:', error);
+      setErr('Error generating short URL.');
+    });
   }, []);
 
   async function shortenUrl(longUrl) {
     try {
       const response = await fetch('https://api.shrtco.de/v2/shorten?url=' + encodeURIComponent(longUrl));
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const data = await response.json();
       if (data.ok) {
         return data.result.full_short_link;
       } else {
+        console.error('Shortening API error:', data.error);
         throw new Error('Error shortening URL');
       }
     } catch (error) {
+      console.error('Error in shortenUrl:', error);
       throw new Error('Error shortening URL');
     }
   }
@@ -36,7 +44,12 @@ export default function Home() {
     };
 
     fetch(window.location.origin + '/api/getM3u?sid=tplay_A&id=123456789&sname=tataP&tkn=xeotpxyastrplg', requestOptions)
-      .then(response => response.text())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.text();
+      })
       .then(result => {
         const data = result;
         const blob = new Blob([data], { type: 'text/plain' });
@@ -53,6 +66,7 @@ export default function Home() {
         setDownloading(false);
       })
       .catch(error => {
+        console.error('Error downloading the M3U file:', error);
         setErr('Error downloading the M3U file');
         setDownloading(false);
       });
