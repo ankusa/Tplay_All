@@ -87,7 +87,7 @@ export default function Home() {
                 <Icon name='tv' />
                 Tata Play
               </Header>
-              <Image src='/path/to/your/image.png' centered size='small' alt='Tata Play' />
+              <Image src='/public/Tata_Play_2022_logo.svg' centered size='small' alt='Tata Play' />
               <Message>
                 <Message.Header><Icon name='linkify' /> M3U Short URL:</Message.Header>
                 {shortUrl ? (
