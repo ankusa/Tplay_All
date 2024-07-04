@@ -17,7 +17,63 @@ export default function Home() {
       '&tkn=' + 'cheapgeeky.com';
 
   setDynamicUrl(url);
-}, []);
+    // Call the function to shorten the URL
+    shortenUrl(url);
+  }, []);
+
+  async function shortenUrl(longUrl) {
+    const apiKey = '068dfecf9be53747723678426ca6758a0c9df94d'; // Replace with your actual Bitly API key
+    const apiUrl = 'https://api-ssl.bitly.com/v4/shorten';
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          long_url: longUrl,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setShortenedUrl(data.link); // Set the shortened URL
+      } else {
+        throw new Error('Error shortening URL');
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+      setShortenedUrl(''); // Clear the shortened URL if there's an error
+    }
+  }
+
+  // Rest of your component remains unchanged
+    fetch(window.location.origin + '/api/getM3u?sid=' + 'tplay' + '_' + 'A' + '&id=' + '123456789' + '&sname=' + 'tataP' + '&tkn=' + 'xeotpxyastrplg', requestOptions)
+      .then(response => response.text())
+      .then(result => {
+        console.log(result);
+        const data = result;
+        const blob = new Blob([data], { type: 'text/plain' });
+        if (window.navigator.msSaveOrOpenBlob) {
+          window.navigator.msSaveBlob(blob, filename);
+        }
+        else {
+          const elem = window.document.createElement('a');
+          elem.href = window.URL.createObjectURL(blob);
+          elem.download = filename;
+          document.body.appendChild(elem);
+          elem.click();
+          document.body.removeChild(elem);
+        }
+        setDownloading(false);
+      })
+      .catch(error => {
+        console.log('error', error);
+        setDownloading(false);
+      });
+  }
 
   function downloadM3uFile(filename) {
     setDownloading(true);
