@@ -126,9 +126,6 @@ export default function Home() {
                 <Message.Header>M3U Dynamic URL:</Message.Header>
                 <image src={`https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(dynamicUrl)}&size=small`} alt="QR Code" />
                 <p>
-                  <a href={dynamicUrl}>{dynamicUrl}</a>
-                </p>
-                  <p>
         Shortened M3U URL:
         <a href={shortenedUrl} target="_blank" rel="noreferrer">
           {shortenedUrl}
