@@ -1,9 +1,10 @@
 import Head from 'next/head'; 
 import { useEffect, useState } from 'react';
-import { Button, Form, Grid, Header, Message, Radio, Segment } from 'semantic-ui-react';
+import { Button, Grid, Header, Message, Segment } from 'semantic-ui-react';
 
 export default function Home() {
   const [dynamicUrl, setDynamicUrl] = useState("");
+  const [shortUrl, setShortUrl] = useState("");
   const [downloading, setDownloading] = useState(false);
   const [err, setErr] = useState("");
 
@@ -15,18 +16,17 @@ export default function Home() {
       '&tkn=' + 'cheapgeeky.com';
 
     setDynamicUrl(url);
+    shortenUrl(url).then(short => setShortUrl(short)).catch(error => console.log(error));
   }, []);
 
-  function shortenUrl(longUrl) {
-    return fetch('https://api.shrtco.de/v2/shorten?url=' + encodeURIComponent(longUrl))
-      .then(response => response.json())
-      .then(data => {
-        if (data.ok) {
-          return data.result.full_short_link;
-        } else {
-          throw new Error('Error shortening URL');
-        }
-      });
+  async function shortenUrl(longUrl) {
+    const response = await fetch('https://api.shrtco.de/v2/shorten?url=' + encodeURIComponent(longUrl));
+    const data = await response.json();
+    if (data.ok) {
+      return data.result.full_short_link;
+    } else {
+      throw new Error('Error shortening URL');
+    }
   }
 
   function downloadM3uFile(filename) {
@@ -79,6 +79,9 @@ export default function Home() {
                 <Message.Header>M3U Dynamic URL: </Message.Header>
                 <p>
                   <a href={dynamicUrl}>{dynamicUrl}</a>
+                </p>
+                <p>
+                  Short URL: <a href={shortUrl}>{shortUrl}</a>
                 </p>
                 <p>
                   Use the M3U URL in the OTT Navigator or Tivimate app for all channels.
