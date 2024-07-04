@@ -70,6 +70,12 @@ export default function Home() {
                 <p>
                   <a href={dynamicUrl}>{dynamicUrl}</a>
                 </p>
+                  <p>
+        Shortened M3U URL:
+        <a href={shortenedUrl} target="_blank" rel="noreferrer">
+          {shortenedUrl}
+        </a>
+      </p>
                 <p>
                   Use the M3U URL in the OTT Navigator or Tivimate app for all channels.
                 </p>
