@@ -53,8 +53,7 @@ export default function Home() {
           <Grid.Column computer={8} tablet={12} mobile={16}>
             <Segment>
               <Header as='h2' textAlign='center'>
-                <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' centered size='small' alt='Tata Play' />
-                TATA PLAY
+                <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' centered size='big' alt='Tata Play' />
               </Header>
               <Message>
                 <Message.Header><Icon name='linkify' /> M3U URL:</Message.Header>
