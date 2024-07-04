@@ -4,7 +4,6 @@ import { Button, Grid, Header, Message, Segment, Icon, Image } from 'semantic-ui
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
-  const [downloading, setDownloading] = useState(false);
   const [err, setErr] = useState("");
 
   useEffect(() => {
@@ -40,42 +39,6 @@ export default function Home() {
     }
   }
 
-  function downloadM3uFile(filename) {
-    setDownloading(true);
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    };
-
-    fetch(`${window.location.origin}/api/getM3u?sid=tplay_A&id=123456789&sname=tataP&tkn=xeotpxyastrplg`, requestOptions)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.text();
-      })
-      .then(result => {
-        const data = result;
-        const blob = new Blob([data], { type: 'text/plain' });
-        if (window.navigator.msSaveOrOpenBlob) {
-          window.navigator.msSaveBlob(blob, filename);
-        } else {
-          const elem = window.document.createElement('a');
-          elem.href = window.URL.createObjectURL(blob);
-          elem.download = filename;
-          document.body.appendChild(elem);
-          elem.click();
-          document.body.removeChild(elem);
-        }
-        setDownloading(false);
-      })
-      .catch(error => {
-        console.error('Error downloading the M3U file:', error);
-        setErr('Error downloading the M3U file');
-        setDownloading(false);
-      });
-  }
-
   return (
     <div>
       <Head>
@@ -86,12 +49,11 @@ export default function Home() {
         <Grid.Row>
           <Grid.Column></Grid.Column>
           <Grid.Column computer={8} tablet={12} mobile={16}>
-            <Segment loading={downloading}>
-              <Header as='h1' textAlign='center'>
-                <Icon name='tv' />
-                Provider: Tata Play
+            <Segment>
+              <Header as='h2' textAlign='center'>
+                <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' centered size='small' alt='Tata Play' />
+                TATA PLAY M3U Generator
               </Header>
-              <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' centered size='small' alt='Tata Play' />
               <Message>
                 <Message.Header><Icon name='linkify' /> M3U Short URL:</Message.Header>
                 {shortUrl ? (
@@ -107,13 +69,6 @@ export default function Home() {
                 <p>
                   Set data reload to 10 minutes and enjoy uninterrupted viewing!
                 </p>
-                <Message.Header><Icon name='download' /> Download your M3U file:</Message.Header>
-                <p>
-                  <Button loading={downloading} primary onClick={() => downloadM3uFile('ts.m3u')}>
-                    <Icon name='download' /> Download M3U file
-                  </Button>
-                </p>
-                <p>Validity of downloaded M3U file: 10 minutes to 24 hours.</p>
               </Message>
               {err && (
                 <Message negative>
