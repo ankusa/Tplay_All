@@ -1,33 +1,33 @@
-import Head from 'next/head';
+import Head from 'next/head'; 
 import { useEffect, useState } from 'react';
-import { Button, Grid, Header, Message, Segment } from 'semantic-ui-react';
-import { BitlyClient } from 'bitly';
-
-const bitly = new BitlyClient('068dfecf9be53747723678426ca6758a0c9df94d', {});
+import { Button, Form, Grid, Header, Message, Radio, Segment } from 'semantic-ui-react';
 
 export default function Home() {
   const [dynamicUrl, setDynamicUrl] = useState("");
-  const [shortUrl, setShortUrl] = useState("");
   const [downloading, setDownloading] = useState(false);
   const [err, setErr] = useState("");
 
   useEffect(() => {
     const url = window.location.origin.replace('localhost', '127.0.0.1') +
-      '/api/getM3u?sid=tplay_A&id=1028268934&sname=tataP&tkn=cheapgeeky.com';
+      '/api/getM3u?sid=' + 'tplay' +
+      '_A&id=' + '1028268934' +
+      '&sname=' + 'tataP' +
+      '&tkn=' + 'cheapgeeky.com';
+
     setDynamicUrl(url);
-
-    async function generateShortUrl(longUrl) {
-      try {
-        const response = await bitly.shorten(longUrl);
-        setShortUrl(response.link);
-      } catch (error) {
-        console.error('Error generating short URL:', error);
-        setErr('Error generating short URL.');
-      }
-    }
-
-    generateShortUrl(url);
   }, []);
+
+  function shortenUrl(longUrl) {
+    return fetch('https://api.shrtco.de/v2/shorten?url=' + encodeURIComponent(longUrl))
+      .then(response => response.json())
+      .then(data => {
+        if (data.ok) {
+          return data.result.full_short_link;
+        } else {
+          throw new Error('Error shortening URL');
+        }
+      });
+  }
 
   function downloadM3uFile(filename) {
     setDownloading(true);
@@ -36,9 +36,10 @@ export default function Home() {
       redirect: 'follow'
     };
 
-    fetch(window.location.origin + '/api/getM3u?sid=tplay_A&id=123456789&sname=tataP&tkn=xeotpxyastrplg', requestOptions)
+    fetch(window.location.origin + '/api/getM3u?sid=' + 'tplay' + '_' + 'A' + '&id=' + '123456789' + '&sname=' + 'tataP' + '&tkn=' + 'xeotpxyastrplg', requestOptions)
       .then(response => response.text())
       .then(result => {
+        console.log(result);
         const data = result;
         const blob = new Blob([data], { type: 'text/plain' });
         if (window.navigator.msSaveOrOpenBlob) {
@@ -55,7 +56,6 @@ export default function Home() {
       })
       .catch(error => {
         console.log('error', error);
-        setErr('Error downloading the M3U file.');
         setDownloading(false);
       });
   }
@@ -64,28 +64,33 @@ export default function Home() {
     <div>
       <Head>
         <title>TATA PLAY COPY PASTE M3U</title>
-        <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
+        <meta
+          name="description"
+          content="Easiest way to generate a Tata Play IPTV (m3u) playlist."
+        />
       </Head>
       <Grid columns='equal' padded centered>
         <Grid.Row>
           <Grid.Column></Grid.Column>
           <Grid.Column computer={8} tablet={12} mobile={16}>
             <Segment loading={downloading}>
-              <Header as='h1'>Provider: Tata Play</Header>
+              <Header as={'h1'}>Provider: Tata Play</Header>
               <Message>
                 <Message.Header>M3U Dynamic URL: </Message.Header>
-                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(dynamicUrl)}&size=small`} alt="QR Code" />
                 <p>
                   <a href={dynamicUrl}>{dynamicUrl}</a>
                 </p>
                 <p>
-                  Short URL: <a href={shortUrl}>{shortUrl}</a>
+                  Use the M3U URL in the OTT Navigator or Tivimate app for all channels.
                 </p>
-                <p>Use the M3U URL in the OTT Navigator or Tivimate app for all channels.</p>
-                <p>Set data reload to 10 minutes and enjoy uninterrupted viewing!</p>
+                <p>
+                  Set data reload to 10 minutes and enjoy uninterrupted viewing!
+                </p>
                 <Message.Header>You cannot generate a permanent m3u file URL on localhost but you can download your m3u file: </Message.Header>
                 <p></p>
-                <Button loading={downloading} primary onClick={() => downloadM3uFile('ts.m3u')}>Download m3u file</Button>
+                <p>
+                  <Button loading={downloading} primary onClick={() => downloadM3uFile('ts.m3u')}>Download m3u file</Button>
+                </p>
                 <p>Validity of downloaded M3U file: 10 minutes to 24 hours.</p>
               </Message>
             </Segment>
@@ -97,7 +102,9 @@ export default function Home() {
           <Grid.Column computer={8} tablet={12} mobile={16}>
             <Message color='red'>
               <Message.Header>Error</Message.Header>
-              <p>{err}</p>
+              <p>
+                {err}
+              </p>
             </Message>
           </Grid.Column>
           <Grid.Column></Grid.Column>
