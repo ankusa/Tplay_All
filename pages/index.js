@@ -63,25 +63,26 @@ export default function Home() {
           <Grid.Column></Grid.Column>
           <Grid.Column computer={8} tablet={12} mobile={16}>
             <Segment loading={downloading}>
-              <Header as={'h1'}>Tata Play m3u</Header>
+              <Header as={'h1'}>Remember the following information:</Header>
               <Message>
-                <Message.Header>Dynamic URL to get m3u: </Message.Header>
+                <Message.Header>Provider: Tata Play</Message.Header>
+                <Message.Header>M3U Dynamic URL:</Message.Header>
                 <image src={`https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(dynamicUrl)}&size=small`} alt="QR Code" />
                 <p>
                   <a href={dynamicUrl}>{dynamicUrl}</a>
                 </p>
                 <p>
-                  You can use the above m3u URL in OTT Navigator or Tivimate app to watch all channels.
+                  Use the M3U URL in the OTT Navigator or Tivimate app for all channels.
                 </p>
                 <p>
-                  Set reload data to 2.5 hour in provider setting of Ott Navigator player &  Enjoy!
+                  Set data reload to 10 minutes and enjoy uninterrupted viewing!
                 </p>
-                <Message.Header>You cannot generate a permanent m3u file URL on localhost but you can download your m3u file: </Message.Header>
+                <Message.Header>You can't generate a permanent M3U file URL on localhost, but you can download the M3U file. </Message.Header>
                 <p></p>
                 <p>
                   <Button loading={downloading} primary onClick={() => downloadM3uFile('ts.m3u')}>Download m3u file</Button>
                 </p>
-                <p>The downloaded m3u file will be valid only for 2.5 Hours to 24 Hours.</p>
+                <p>Validity of downloaded M3U file: 10 minutes to 24 hours.</p>
               </Message>
             </Segment>
           </Grid.Column>
