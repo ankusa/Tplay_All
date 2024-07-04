@@ -2,6 +2,8 @@
 
 import fetch from "cross-fetch";
 
+// ... (Your existing code)
+
 const getUserChanDetails = async () => {
     let hmacValue;
     let obj = { list: [] };
@@ -81,6 +83,28 @@ export default async function handler(req, res) {
 
     if (uData.tsActive) {
         let m3uString = await generateM3u(uData);
+        res.status(200).send(m3uString);
+    }
+}
+
+// Additional channel information
+const additionalChannels = `
+#EXTINF:-1 tvg-logo="https://c.evidon.com/pub_logos/2796-2021122219404475.png" group-title="SonyLiv", Sony Kal
+https://spt-sonykal-1-us.lg.wurl.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="15" tvg-logo="https://sonypicturesnetworks.com/images/logos/SET-LOGO-HD.png" group-title="SonyLiv", SET HD
+https://dai.google.com/ssai/event/HgaB-u6rSpGx3mo4Xu3sLw/master.m3u8
+#EXTINF:-1 tvg-id="48" tvg-logo="https://sonypicturesnetworks.com/images/logos/SONY%20SAB%20HD_WHITE.png" group-title="SonyLiv", Sony SAB HD
+https://dai.google.com/ssai/event/UI4QFJ_uRk6aLxIcADqa_A/master.m3u8
+// ... (Add other channels as needed)
+`;
+
+export default async function handler(req, res) {
+    let uData = {
+        tsActive: true
+    };
+
+    if (uData.tsActive) {
+        let m3uString = await generateM3u(uData) + additionalChannels;
         res.status(200).send(m3uString);
     }
 }
