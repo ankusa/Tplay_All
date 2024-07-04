@@ -8,22 +8,26 @@ export default function Home() {
   const [err, setErr] = useState("");
 
   useEffect(() => {
-    const url = window.location.origin.replace('localhost', '127.0.0.1') +
-      '/api/getM3u?sid=tplay_A&id=1028268934&sname=tataP&tkn=cheapgeeky.com';
+    const url = `${window.location.origin.replace('localhost', '127.0.0.1')}/api/getM3u?sid=tplay_A&id=1028268934&sname=tataP&tkn=cheapgeeky.com`;
 
-    shortenUrl(url).then(short => setShortUrl(short)).catch(error => {
-      console.error('Error generating short URL:', error);
-      setErr('Error generating short URL.');
-    });
+    shortenUrl(url)
+      .then(short => setShortUrl(short))
+      .catch(error => {
+        console.error('Error generating short URL:', error);
+        setErr('Error generating short URL.');
+      });
   }, []);
 
   async function shortenUrl(longUrl) {
     try {
-      const response = await fetch('https://api.shrtco.de/v2/shorten?url=' + encodeURIComponent(longUrl));
+      console.log('Attempting to shorten URL:', longUrl);
+      const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${encodeURIComponent(longUrl)}`);
+      console.log('Response:', response);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
+      console.log('Data:', data);
       if (data.ok) {
         return data.result.full_short_link;
       } else {
@@ -43,7 +47,7 @@ export default function Home() {
       redirect: 'follow'
     };
 
-    fetch(window.location.origin + '/api/getM3u?sid=tplay_A&id=123456789&sname=tataP&tkn=xeotpxyastrplg', requestOptions)
+    fetch(`${window.location.origin}/api/getM3u?sid=tplay_A&id=123456789&sname=tataP&tkn=xeotpxyastrplg`, requestOptions)
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -85,9 +89,9 @@ export default function Home() {
             <Segment loading={downloading}>
               <Header as='h1' textAlign='center'>
                 <Icon name='tv' />
-                Tata Play
+                Provider: Tata Play
               </Header>
-              <Image src='/public/Tata_Play_2022_logo.svg' centered size='small' alt='Tata Play' />
+              <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' centered size='small' alt='Tata Play' />
               <Message>
                 <Message.Header><Icon name='linkify' /> M3U Short URL:</Message.Header>
                 {shortUrl ? (
