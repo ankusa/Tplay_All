@@ -63,10 +63,10 @@ export default function Home() {
           <Grid.Column></Grid.Column>
           <Grid.Column computer={8} tablet={12} mobile={16}>
             <Segment loading={downloading}>
-              <Header as={'h1'}>Generate Tata Play m3u</Header>
+              <Header as={'h1'}>Tata Play m3u</Header>
               <Message>
                 <Message.Header>Dynamic URL to get m3u: </Message.Header>
-                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(dynamicUrl)}&size=small`} alt="QR Code" />
+                <image src={`https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(dynamicUrl)}&size=small`} alt="QR Code" />
                 <p>
                   <a href={dynamicUrl}>{dynamicUrl}</a>
                 </p>
@@ -103,7 +103,7 @@ export default function Home() {
           <Grid.Column></Grid.Column>
           <Grid.Column textAlign='center' computer={8} tablet={12} mobile={16}>
             <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer">Visit</a>
-            <p>By Ankush</p>
+            <p>Made with ♥️ by Ankush.</p>
           </Grid.Column>
           <Grid.Column></Grid.Column>
         </Grid.Row>
