@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { Button, Grid, Header, Message, Segment } from 'semantic-ui-react';
 
 export default function Home() {
-  const [dynamicUrl, setDynamicUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [downloading, setDownloading] = useState(false);
   const [err, setErr] = useState("");
@@ -15,7 +14,6 @@ export default function Home() {
       '&sname=' + 'tataP' +
       '&tkn=' + 'cheapgeeky.com';
 
-    setDynamicUrl(url);
     shortenUrl(url).then(short => setShortUrl(short)).catch(error => console.log(error));
   }, []);
 
@@ -76,10 +74,7 @@ export default function Home() {
             <Segment loading={downloading}>
               <Header as={'h1'}>Provider: Tata Play</Header>
               <Message>
-                <Message.Header>M3U Dynamic URL: </Message.Header>
-                <p>
-                  <a href={dynamicUrl}>{dynamicUrl}</a>
-                </p>
+                <Message.Header>M3U Short URL: </Message.Header>
                 <p>
                   Short URL: <a href={shortUrl}>{shortUrl}</a>
                 </p>
