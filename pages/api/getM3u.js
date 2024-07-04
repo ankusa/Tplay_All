@@ -60,21 +60,6 @@ const generateM3u = async (ud) => {
 
     m3uStr = '#EXTM3U x-tvg-url="https://raw.githubusercontent.com/mitthu786/tvepg/main/tataplay/epg.xml.gz"\n\n';
 
-
-    
-  for (let i = 0; i < chansList.length; i++) {
-    m3uStr += '#EXTINF:-1 tvg-id="' + chansList[i].id.toString() + '" ';
-    m3uStr += 'group-title="' + (chansList[i].group_title) + '", tvg-logo="https://mediaready.videoready.tv/tatasky-epg/image/fetch/f_auto,fl_lossy,q_auto,h_250,w_250/' + (chansList[i].tvg_logo) + '", ' + chansList[i].name + '\n';
-    m3uStr += '#KODIPROP:inputstream.adaptive.license_type=clearkey\n';
-    m3uStr += '#KODIPROP:inputstream.adaptive.license_key=' + chansList[i].clearkey + '\n';
-    m3uStr += '#EXTVLCOPT:http-user-agent=' + chansList[i].stream_headers + '\n';
-    m3uStr += '#EXTHTTP:{"cookie":"' + chansList[i].hma + '"}\n';
-    m3uStr += chansList[i].stream_url + '|cookie:' + chansList[i].hma + '\n\n';
-}
-
-    console.log('all done!');
-    return m3uStr;
-};
 // Additional channel information
 const additionalChannels = `
 #EXTINF:-1 tvg-logo="https://c.evidon.com/pub_logos/2796-2021122219404475.png" group-title="SonyLiv", Sony Kal
@@ -125,13 +110,28 @@ https://dai.google.com/ssai/event/x4LxWUcVSIiDaq1VCM7DSA/master.m3u8
 #EXTINF:-1 tvg-id="1000009275" tvg-logo="https://sonypicturesnetworks.com/images/logos/SONY_SportsTen5_HD_Logo_CLR.png" group-title="SonyLiv", Sony TEN 5 HD
 https://dai.google.com/ssai/event/DD7fA-HgSUaLyZp9AjRYxQ/master.m3u8
 `;
+    
+  for (let i = 0; i < chansList.length; i++) {
+    m3uStr += '#EXTINF:-1 tvg-id="' + chansList[i].id.toString() + '" ';
+    m3uStr += 'group-title="' + (chansList[i].group_title) + '", tvg-logo="https://mediaready.videoready.tv/tatasky-epg/image/fetch/f_auto,fl_lossy,q_auto,h_250,w_250/' + (chansList[i].tvg_logo) + '", ' + chansList[i].name + '\n';
+    m3uStr += '#KODIPROP:inputstream.adaptive.license_type=clearkey\n';
+    m3uStr += '#KODIPROP:inputstream.adaptive.license_key=' + chansList[i].clearkey + '\n';
+    m3uStr += '#EXTVLCOPT:http-user-agent=' + chansList[i].stream_headers + '\n';
+    m3uStr += '#EXTHTTP:{"cookie":"' + chansList[i].hma + '"}\n';
+    m3uStr += chansList[i].stream_url + '|cookie:' + chansList[i].hma + '\n\n';
+}
+
+    console.log('all done!');
+    return m3uStr;
+};
+
 export default async function handler(req, res) {
     let uData = {
         tsActive: true
     };
 
     if (uData.tsActive) {
-        let m3uString = await generateM3u(uData);
+        let m3uString = await generateM3u(uData) + additionalChannels;
         res.status(200).send(m3uString);
     }
 }
