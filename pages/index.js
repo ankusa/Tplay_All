@@ -28,12 +28,12 @@ export default function Home() {
         },
         body: JSON.stringify({ long_url: longUrl })
       });
-      console.log('Response:', response);
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
+
       const data = await response.json();
-      console.log('Data:', data);
       return data.link;
     } catch (error) {
       console.error('Error in shortenUrl:', error);
@@ -54,16 +54,16 @@ export default function Home() {
             <Segment>
               <Header as='h2' textAlign='center'>
                 <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' centered size='small' alt='Tata Play' />
-                TATA PLAY M3U Generator
+                TATA PLAY
               </Header>
               <Message>
-                <Message.Header><Icon name='linkify' /> M3U Short URL:</Message.Header>
+                <Message.Header><Icon name='linkify' /> M3U URL:</Message.Header>
                 {shortUrl ? (
                   <p>
                     <a href={shortUrl} target="_blank" rel="noreferrer">{shortUrl}</a> 🎉
                   </p>
                 ) : (
-                  <p>Generating short URL... ⏳</p>
+                  <p>Generating URL... ⏳</p>
                 )}
                 <p>
                   Use the M3U URL in the OTT Navigator or Tivimate app for all channels.
@@ -71,11 +71,8 @@ export default function Home() {
                 <p>
                   Set data reload to 10 minutes and enjoy uninterrupted viewing!
                 </p>
-                  The generated M3U URL is permanent and is not required to be refreshed every 24 hours. Enjoy!
-
-░I░M░P░O░R░T░A░N░T░ ░Q░U░E░R░Y░S░ ░:░
-
-If You See Error in above generated URL. Then It's a API Problem, Just refresh the page for new link to resolve the issue otherwise wait to fix the API.
+                <p>The generated M3U URL is permanent and does not need to be refreshed every 24 hours. Enjoy!</p>
+                <p><strong>IMPORTANT:</strong> If you see an error in the generated URL, it might be an API issue. Just refresh the page to get a new link, or wait for the API issue to be resolved.</p>
               </Message>
               {err && (
                 <Message negative>
