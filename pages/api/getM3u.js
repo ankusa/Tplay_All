@@ -76,17 +76,6 @@ const generateM3u = async (ud) => {
     return m3uStr;
 };
 
-export default async function handler(req, res) {
-    let uData = {
-        tsActive: true
-    };
-
-    if (uData.tsActive) {
-        let m3uString = await generateM3u(uData);
-        res.status(200).send(m3uString);
-    }
-}
-
 // Additional channel information
 const additionalChannels = `
 #EXTINF:-1 tvg-logo="https://c.evidon.com/pub_logos/2796-2021122219404475.png" group-title="SonyLiv", Sony Kal
