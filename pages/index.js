@@ -20,19 +20,21 @@ export default function Home() {
   async function shortenUrl(longUrl) {
     try {
       console.log('Attempting to shorten URL:', longUrl);
-      const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${encodeURIComponent(longUrl)}`);
+      const response = await fetch('https://api-ssl.bitly.com/v4/shorten', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer 068dfecf9be53747723678426ca6758a0c9df94d`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ long_url: longUrl })
+      });
       console.log('Response:', response);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
       console.log('Data:', data);
-      if (data.ok) {
-        return data.result.full_short_link;
-      } else {
-        console.error('Shortening API error:', data.error);
-        throw new Error('Error shortening URL');
-      }
+      return data.link;
     } catch (error) {
       console.error('Error in shortenUrl:', error);
       throw new Error('Error shortening URL');
