@@ -76,11 +76,7 @@ export default function Home() {
                 <p>
                   Set data reload to 10 minutes and enjoy uninterrupted viewing!
                 </p>
-               // <Message.Header>You can't generate a permanent M3U file URL on localhost, but you can download the M3U file.</Message.Header>
-                //<p></p>
-                //<p>
-                 // <Button loading={downloading} primary onClick={() => downloadM3uFile('ts.m3u')}>Download m3u file</Button>
-               // </p>
+               
                 <p>Validity of downloaded M3U file: 10 minutes to 24 hours.</p>
               </Message>
             </Segment>
