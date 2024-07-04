@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { Button, Grid, Header, Message, Segment, Icon, Image } from 'semantic-ui-react';
+import { Grid, Header, Message, Segment, Icon, Image } from 'semantic-ui-react';
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
@@ -13,20 +13,19 @@ export default function Home() {
       .then(short => setShortUrl(short))
       .catch(error => {
         console.error('Error generating short URL:', error);
-        setErr('Error generating short URL.');
+        setErr('Error generating short URL. Please try refreshing the page.');
       });
   }, []);
 
   async function shortenUrl(longUrl) {
     try {
-      console.log('Attempting to shorten URL:', longUrl);
       const response = await fetch('https://api-ssl.bitly.com/v4/shorten', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer 068dfecf9be53747723678426ca6758a0c9df94d`,
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ long_url: longUrl })
+        body: JSON.stringify({ long_url: longUrl }),
       });
 
       if (!response.ok) {
@@ -52,17 +51,17 @@ export default function Home() {
           <Grid.Column></Grid.Column>
           <Grid.Column computer={8} tablet={12} mobile={16}>
             <Segment>
-              <Header>
-                <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' centered size='' alt='Tata Play' />
-              </Header>
+              
+                <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' centered size='big' alt='Tata Play' />
+               
               <Message>
-                <Message.Header><Icon name='linkify' /> M3U URL:</Message.Header>
+                <Message.Header><Icon name='linkify' /> M3U Short URL:</Message.Header>
                 {shortUrl ? (
                   <p>
                     <a href={shortUrl} target="_blank" rel="noreferrer">{shortUrl}</a> 🎉
                   </p>
                 ) : (
-                  <p>Generating URL... ⏳</p>
+                  <p>Generating short URL... ⏳</p>
                 )}
                 <p>
                   Use the M3U URL in the OTT Navigator or Tivimate app for all channels.
