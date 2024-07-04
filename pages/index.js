@@ -6,13 +6,15 @@ export default function Home() {
   const [dynamicUrl, setDynamicUrl] = useState("");
   const [downloading, setDownloading] = useState(false);
   const [err, setErr] = useState("");
+  const [shortenedUrl, setShortenedUrl] = useState(""); // New state for shortened URL
 
   useEffect(() => {
-  const url = window.location.origin.replace('localhost', '127.0.0.1') +
-    '/api/getM3u?sid=' + 'tplay' +
-    '_A&id=' + '1028268934' +
-    '&sname=' + 'tataP' +
-    '&tkn=' + 'cheapgeeky.com';
+    // Set dynamicUrl based on your parameters
+    const url = window.location.origin.replace('localhost', '127.0.0.1') +
+      '/api/getM3u?sid=' + 'tplay' +
+      '_A&id=' + '1028268934' +
+      '&sname=' + 'tataP' +
+      '&tkn=' + 'cheapgeeky.com';
 
   setDynamicUrl(url);
 }, []);
