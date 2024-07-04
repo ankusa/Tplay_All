@@ -1,6 +1,6 @@
 import Head from 'next/head'; 
 import { useEffect, useState } from 'react';
-import { Button, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { Button, Grid, Header, Message, Segment, Icon } from 'semantic-ui-react';
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
@@ -9,20 +9,21 @@ export default function Home() {
 
   useEffect(() => {
     const url = window.location.origin.replace('localhost', '127.0.0.1') +
-      '/api/getM3u?sid=' + 'tplay' +
-      '_A&id=' + '1028268934' +
-      '&sname=' + 'tataP' +
-      '&tkn=' + 'cheapgeeky.com';
+      '/api/getM3u?sid=tplay_A&id=1028268934&sname=tataP&tkn=cheapgeeky.com';
 
-    shortenUrl(url).then(short => setShortUrl(short)).catch(error => console.log(error));
+    shortenUrl(url).then(short => setShortUrl(short)).catch(error => setErr('Error generating short URL.'));
   }, []);
 
   async function shortenUrl(longUrl) {
-    const response = await fetch('https://api.shrtco.de/v2/shorten?url=' + encodeURIComponent(longUrl));
-    const data = await response.json();
-    if (data.ok) {
-      return data.result.full_short_link;
-    } else {
+    try {
+      const response = await fetch('https://api.shrtco.de/v2/shorten?url=' + encodeURIComponent(longUrl));
+      const data = await response.json();
+      if (data.ok) {
+        return data.result.full_short_link;
+      } else {
+        throw new Error('Error shortening URL');
+      }
+    } catch (error) {
       throw new Error('Error shortening URL');
     }
   }
@@ -34,10 +35,9 @@ export default function Home() {
       redirect: 'follow'
     };
 
-    fetch(window.location.origin + '/api/getM3u?sid=' + 'tplay' + '_' + 'A' + '&id=' + '123456789' + '&sname=' + 'tataP' + '&tkn=' + 'xeotpxyastrplg', requestOptions)
+    fetch(window.location.origin + '/api/getM3u?sid=tplay_A&id=123456789&sname=tataP&tkn=xeotpxyastrplg', requestOptions)
       .then(response => response.text())
       .then(result => {
-        console.log(result);
         const data = result;
         const blob = new Blob([data], { type: 'text/plain' });
         if (window.navigator.msSaveOrOpenBlob) {
@@ -53,7 +53,7 @@ export default function Home() {
         setDownloading(false);
       })
       .catch(error => {
-        console.log('error', error);
+        setErr('Error downloading the M3U file');
         setDownloading(false);
       });
   }
@@ -62,48 +62,47 @@ export default function Home() {
     <div>
       <Head>
         <title>TATA PLAY COPY PASTE M3U</title>
-        <meta
-          name="description"
-          content="Easiest way to generate a Tata Play IPTV (m3u) playlist."
-        />
+        <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
       </Head>
       <Grid columns='equal' padded centered>
         <Grid.Row>
           <Grid.Column></Grid.Column>
           <Grid.Column computer={8} tablet={12} mobile={16}>
             <Segment loading={downloading}>
-              <Header as={'h1'}>Provider: Tata Play</Header>
+              <Header as='h1' textAlign='center'>
+                <Icon name='tv' />
+                Provider: Tata Play
+              </Header>
               <Message>
-                <Message.Header>M3U Short URL: </Message.Header>
-                <p>
-                  Short URL: <a href={shortUrl}>{shortUrl}</a>
-                </p>
+                <Message.Header>M3U Short URL:</Message.Header>
+                {shortUrl ? (
+                  <p>
+                    <a href={shortUrl} target="_blank" rel="noreferrer">{shortUrl}</a>
+                  </p>
+                ) : (
+                  <p>Generating short URL...</p>
+                )}
                 <p>
                   Use the M3U URL in the OTT Navigator or Tivimate app for all channels.
                 </p>
                 <p>
                   Set data reload to 10 minutes and enjoy uninterrupted viewing!
                 </p>
-                <Message.Header>You cannot generate a permanent m3u file URL on localhost but you can download your m3u file: </Message.Header>
-                <p></p>
+                <Message.Header>Download your M3U file:</Message.Header>
                 <p>
-                  <Button loading={downloading} primary onClick={() => downloadM3uFile('ts.m3u')}>Download m3u file</Button>
+                  <Button loading={downloading} primary onClick={() => downloadM3uFile('ts.m3u')}>
+                    <Icon name='download' /> Download M3U file
+                  </Button>
                 </p>
                 <p>Validity of downloaded M3U file: 10 minutes to 24 hours.</p>
               </Message>
+              {err && (
+                <Message negative>
+                  <Message.Header>Error</Message.Header>
+                  <p>{err}</p>
+                </Message>
+              )}
             </Segment>
-          </Grid.Column>
-          <Grid.Column></Grid.Column>
-        </Grid.Row>
-        <Grid.Row style={{ display: err === '' ? 'none' : 'block' }}>
-          <Grid.Column></Grid.Column>
-          <Grid.Column computer={8} tablet={12} mobile={16}>
-            <Message color='red'>
-              <Message.Header>Error</Message.Header>
-              <p>
-                {err}
-              </p>
-            </Message>
           </Grid.Column>
           <Grid.Column></Grid.Column>
         </Grid.Row>
