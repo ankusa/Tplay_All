@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { Button, Grid, Header, Message, Segment, Icon } from 'semantic-ui-react';
+import { Button, Grid, Header, Message, Segment, Icon, Image } from 'semantic-ui-react';
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
@@ -85,16 +85,17 @@ export default function Home() {
             <Segment loading={downloading}>
               <Header as='h1' textAlign='center'>
                 <Icon name='tv' />
-                Provider: Tata Play
+                Tata Play
               </Header>
+              <Image src='/path/to/your/image.png' centered size='small' alt='Tata Play' />
               <Message>
-                <Message.Header>M3U Short URL:</Message.Header>
+                <Message.Header><Icon name='linkify' /> M3U Short URL:</Message.Header>
                 {shortUrl ? (
                   <p>
-                    <a href={shortUrl} target="_blank" rel="noreferrer">{shortUrl}</a>
+                    <a href={shortUrl} target="_blank" rel="noreferrer">{shortUrl}</a> 🎉
                   </p>
                 ) : (
-                  <p>Generating short URL...</p>
+                  <p>Generating short URL... ⏳</p>
                 )}
                 <p>
                   Use the M3U URL in the OTT Navigator or Tivimate app for all channels.
@@ -102,7 +103,7 @@ export default function Home() {
                 <p>
                   Set data reload to 10 minutes and enjoy uninterrupted viewing!
                 </p>
-                <Message.Header>Download your M3U file:</Message.Header>
+                <Message.Header><Icon name='download' /> Download your M3U file:</Message.Header>
                 <p>
                   <Button loading={downloading} primary onClick={() => downloadM3uFile('ts.m3u')}>
                     <Icon name='download' /> Download M3U file
@@ -112,7 +113,7 @@ export default function Home() {
               </Message>
               {err && (
                 <Message negative>
-                  <Message.Header>Error</Message.Header>
+                  <Message.Header><Icon name='exclamation circle' /> Error</Message.Header>
                   <p>{err}</p>
                 </Message>
               )}
@@ -123,7 +124,7 @@ export default function Home() {
         <Grid.Row>
           <Grid.Column></Grid.Column>
           <Grid.Column textAlign='center' computer={8} tablet={12} mobile={16}>
-            <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer">Visit CheapGeeky</a>
+            <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
             <p>Made with ♥️ by Ankush.</p>
           </Grid.Column>
           <Grid.Column></Grid.Column>
