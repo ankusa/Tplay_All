@@ -94,7 +94,7 @@ export default function Home() {
                   Set data reload to 10 minutes and enjoy uninterrupted viewing!
                 </p>
                 <p>The generated M3U URL is permanent and does not need to be refreshed every 24 hours. Enjoy!</p>
-                <p><strong>IMPORTANT:</strong> If you encounter an error with the generated URL, it might be due to an API issue. Simply refresh the page to get a new link, or wait for the API issue to be resolved.</p>
+                <p><strong>IMPORTANT:</strong> If you encounter an error with the generated URL, it might be due to an API issue. Simply wait for the API issue to be resolved.</p>
               </Message>
               {err && (
                 <Message negative>
