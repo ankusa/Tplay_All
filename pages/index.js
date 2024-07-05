@@ -36,10 +36,12 @@ export default function Home() {
 
       if (!response.ok) {
         const errorData = await response.json();
+        console.error('Bitly API Error:', errorData);
         throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.message}`);
       }
 
       const data = await response.json();
+      console.log('Bitly API Response:', data);
       return data.link;
     } catch (error) {
       console.error('Error in shortenUrl:', error);
@@ -58,8 +60,8 @@ export default function Home() {
 
   async function incrementVisitorCounter() {
     try {
-      // Replace this URL with your backend API endpoint
       const response = await axios.post('/api/increment-counter');
+      console.log('Increment Counter Response:', response.data);
       setVisitorCount(response.data.count);
     } catch (error) {
       console.error('Error incrementing visitor counter:', error);
