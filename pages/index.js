@@ -73,7 +73,7 @@ export default function Home() {
       <Head>
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
-    <script type='text/javascript' src='//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js'></script>
+        <script type='text/javascript' src='//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js'></script>
       </Head>
       <Grid columns='equal' padded centered>
         <Grid.Row>
@@ -121,19 +121,20 @@ export default function Home() {
             <p>Made with ♥️ by Ankush.</p>
             <div style={{ margin: '20px 0' }}>
               <script type="text/javascript">
-	atOptions = {
-		'key' : '7935fdc40a369b1b8e7fcfd0f9435185',
-		'format' : 'iframe',
-		'height' : 60,
-		'width' : 468,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js"></script>
+                {`atOptions = {
+                  key: '7935fdc40a369b1b8e7fcfd0f9435185',
+                  format: 'iframe',
+                  height: 60,
+                  width: 468,
+                  params: {}
+                };`}
+              </script>
+              <script type="text/javascript" src="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js"></script>
             </div>
             <div style={{ margin: '20px 0' }}>
               <script async="async" data-cfasync="false" src="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js"></script>
-<div id="container-44ae6eacdda63238ece6e65059c59ec8"></div>
+              <div id="container-44ae6eacdda63238ece6e65059c59ec8"></div>
+            </div>
             <div style={{ margin: '20px 0' }}>
               <script type="text/javascript">
                 {`(function() {
