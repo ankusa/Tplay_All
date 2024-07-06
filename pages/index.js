@@ -85,6 +85,16 @@ export default function Home() {
           <Grid.Column computer={8} tablet={12} mobile={16}>
             <Segment>
               <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' centered size='big' alt='Tata Play' />
+          <script type="text/javascript">
+	atOptions = {
+		'key' : '7935fdc40a369b1b8e7fcfd0f9435185',
+		'format' : 'iframe',
+		'height' : 60,
+		'width' : 468,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js"></script>
               <Message>
                 <Message.Header><Icon name='linkify' /> M3U Short URL:</Message.Header>
                 {shortUrl ? (
