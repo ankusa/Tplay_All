@@ -22,23 +22,6 @@ export default function Home() {
 
     getVisitorInfo();
     incrementVisitorCounter();
-
-    // Load external scripts
-    const script1 = document.createElement('script');
-    script1.src = "//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js";
-    script1.async = true;
-    document.body.appendChild(script1);
-
-    const script2 = document.createElement('script');
-    script2.src = "//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js";
-    script2.async = true;
-    script2.setAttribute('data-cfasync', 'false');
-    document.body.appendChild(script2);
-
-    const script3 = document.createElement('script');
-    script3.src = "https://controlaffliction.com/e2butenyvy?key=399aebd799b150e0683df07e9b033ae3";
-    script3.async = true;
-    document.body.appendChild(script3);
   }, []);
 
   async function shortenUrl(longUrl) {
@@ -92,6 +75,10 @@ export default function Home() {
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
       </Head>
+      <Script
+        src="//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js"
+        strategy="afterInteractive"
+      />
       <Grid columns='equal' padded centered>
         <Grid.Row>
           <Grid.Column></Grid.Column>
@@ -136,6 +123,28 @@ export default function Home() {
             </Message>
             <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
             <p>Made with ♥️ by Ankush.</p>
+            <div style={{ margin: '20px 0' }}>
+              <Script
+                src="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js"
+                strategy="afterInteractive"
+              />
+            </div>
+            <div style={{ margin: '20px 0' }}>
+              <Script
+                src="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js"
+                strategy="afterInteractive"
+                async
+                data-cfasync="false"
+              />
+              <div id="container-44ae6eacdda63238ece6e65059c59ec8"></div>
+            </div>
+            <div style={{ margin: '20px 0' }}>
+              <Script
+                src="https://controlaffliction.com/e2butenyvy?key=399aebd799b150e0683df07e9b033ae3"
+                strategy="afterInteractive"
+                async
+              />
+            </div>
           </Grid.Column>
           <Grid.Column></Grid.Column>
         </Grid.Row>
