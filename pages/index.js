@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Script from 'next/script';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Grid, Message, Segment, Icon, Image } from 'semantic-ui-react';
@@ -73,8 +74,11 @@ export default function Home() {
       <Head>
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
-        <script type='text/javascript' src='//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js'></script>
       </Head>
+      <Script
+        src="//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js"
+        strategy="afterInteractive"
+      />
       <Grid columns='equal' padded centered>
         <Grid.Row>
           <Grid.Column></Grid.Column>
@@ -120,30 +124,26 @@ export default function Home() {
             <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
             <p>Made with ♥️ by Ankush.</p>
             <div style={{ margin: '20px 0' }}>
-              <script type="text/javascript">
-                {`atOptions = {
-                  key: '7935fdc40a369b1b8e7fcfd0f9435185',
-                  format: 'iframe',
-                  height: 60,
-                  width: 468,
-                  params: {}
-                };`}
-              </script>
-              <script type="text/javascript" src="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js"></script>
+              <Script
+                src="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js"
+                strategy="afterInteractive"
+              />
             </div>
             <div style={{ margin: '20px 0' }}>
-              <script async="async" data-cfasync="false" src="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js"></script>
+              <Script
+                src="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js"
+                strategy="afterInteractive"
+                async
+                data-cfasync="false"
+              />
               <div id="container-44ae6eacdda63238ece6e65059c59ec8"></div>
             </div>
             <div style={{ margin: '20px 0' }}>
-              <script type="text/javascript">
-                {`(function() {
-                  var adsterra = document.createElement('script');
-                  adsterra.src = 'https://controlaffliction.com/e2butenyvy?key=399aebd799b150e0683df07e9b033ae3';
-                  adsterra.async = true;
-                  document.body.appendChild(adsterra);
-                })();`}
-              </script>
+              <Script
+                src="https://controlaffliction.com/e2butenyvy?key=399aebd799b150e0683df07e9b033ae3"
+                strategy="afterInteractive"
+                async
+              />
             </div>
           </Grid.Column>
           <Grid.Column></Grid.Column>
