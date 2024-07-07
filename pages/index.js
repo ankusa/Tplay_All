@@ -1,8 +1,19 @@
 import Head from 'next/head';
-import Script from 'next/script';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Grid, Message, Segment, Icon, Image } from 'semantic-ui-react';
+
+// Adsterra ad component
+const AdsterraAd = ({ adId }) => (
+  <div style={{ margin: '20px 0' }}>
+    <script
+      async
+      data-cfasync="false"
+      src={`//controlaffliction.com/7f4afa6163e1c4f538d5ed0af889234b/invoke.js`}
+    ></script>
+    <div id={`container-${adId}`}></div>
+  </div>
+);
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
@@ -75,10 +86,6 @@ export default function Home() {
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
       </Head>
-      <Script
-        src="//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js"
-        strategy="afterInteractive"
-      />
       <Grid columns='equal' padded centered>
         <Grid.Row>
           <Grid.Column></Grid.Column>
@@ -110,6 +117,8 @@ export default function Home() {
                 </Message>
               )}
             </Segment>
+            {/* Adsterra Ad */}
+            <AdsterraAd adId="23608485" />
           </Grid.Column>
           <Grid.Column></Grid.Column>
         </Grid.Row>
@@ -123,24 +132,13 @@ export default function Home() {
             </Message>
             <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
             <p>Made with ♥️ by Ankush.</p>
-            <div style={{ margin: '20px 0' }}>
-              <Script
-                src="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js"
-                strategy="afterInteractive"
-              />
-              <div id="container-7935fdc40a369b1b8e7fcfd0f9435185"></div>
-            </div>
-            <div style={{ margin: '20px 0' }}>
-              <Script
-                src="https://controlaffliction.com/e2butenyvy?key=399aebd799b150e0683df07e9b033ae3"
-                strategy="afterInteractive"
-                async
-              />
-            </div>
+            {/* Adsterra Ads */}
+            <AdsterraAd adId="23608453" />
+            <AdsterraAd adId="23608462" />
           </Grid.Column>
           <Grid.Column></Grid.Column>
         </Grid.Row>
       </Grid>
     </div>
   );
-                  }
+}
