@@ -7,7 +7,10 @@ const AdsterraAd = ({ adScriptSrc, adContainerId }) => {
       script.src = adScriptSrc;
       script.async = true;
       script.setAttribute('data-cfasync', 'false');
-      script.onload = () => console.log(`Ad script loaded: ${adScriptSrc}`);
+      script.onload = () => {
+        console.log(`Ad script loaded: ${adScriptSrc}`);
+        checkAdLoaded(adContainerId);
+      };
       script.onerror = () => console.error(`Failed to load ad script: ${adScriptSrc}`);
       document.getElementById(adContainerId).appendChild(script);
     };
@@ -19,7 +22,16 @@ const AdsterraAd = ({ adScriptSrc, adContainerId }) => {
     }
   }, [adScriptSrc, adContainerId]);
 
-  return <div id={adContainerId} style={{ margin: '20px 0' }}></div>;
+  const checkAdLoaded = (adContainerId) => {
+    const adContainer = document.getElementById(adContainerId);
+    if (adContainer && adContainer.innerHTML.trim() === "") {
+      console.warn(`Ad container is empty: ${adContainerId}`);
+    } else {
+      console.log(`Ad content found in container: ${adContainerId}`);
+    }
+  };
+
+  return <div id={adContainerId} style={{ margin: '20px 0', minHeight: '250px', border: '1px solid #ccc' }}></div>;
 };
 
 export default AdsterraAd;
