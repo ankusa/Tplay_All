@@ -49,6 +49,8 @@ export default function Home() {
     }
   }
 
+  console.log('Rendering Home component');
+
   return (
     <div>
       <Head>
@@ -106,7 +108,6 @@ export default function Home() {
           <Grid.Column></Grid.Column>
           <Grid.Column textAlign='center' computer={8} tablet={12} mobile={16}>
             <Message>
-              <Message.Header><Icon name='world' /> Visitor Information</Message.Header>
               <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
               <p>Made with ♥️ by Ankush.</p>
             </Message>
