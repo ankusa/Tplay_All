@@ -2,7 +2,6 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Grid, Message, Segment, Icon, Image } from 'semantic-ui-react';
-import AdsterraAd from '../components/AdsterraAd';  // Correct path to AdsterraAd component
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
@@ -22,6 +21,12 @@ export default function Home() {
 
     getVisitorInfo();
     incrementVisitorCounter();
+
+    // Dynamically load Adsterra scripts
+    loadScript("//controlaffliction.com/7f4afa6163e1c4f538d5ed0af889234b/invoke.js");
+    loadScript("//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js");
+    loadScript("//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js");
+    loadScript("//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js");
   }, []);
 
   async function shortenUrl(longUrl) {
@@ -69,6 +74,14 @@ export default function Home() {
     }
   }
 
+  // Function to dynamically load scripts
+  const loadScript = (src) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = true;
+    document.body.appendChild(script);
+  };
+
   return (
     <div>
       <Head>
@@ -106,8 +119,11 @@ export default function Home() {
                 </Message>
               )}
             </Segment>
-            {/* Adsterra Ad */}
-            <AdsterraAd adScriptSrc="//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js" adContainerId="ad-container-1" />
+            {/* Placeholder for Ad containers */}
+            <div id="ad-container-1"></div>
+            <div id="ad-container-2"></div>
+            <div id="ad-container-3"></div>
+            <div id="ad-container-4"></div>
           </Grid.Column>
           <Grid.Column></Grid.Column>
         </Grid.Row>
@@ -121,18 +137,6 @@ export default function Home() {
             </Message>
             <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
             <p>Made with ♥️ by Ankush.</p>
-            <Grid.Column textAlign='center' computer={8} tablet={12} mobile={16}>
-  {/* Adsterra Ad */}
-  <div id="ad-container-2" className="ad-container">
-    <AdsterraAd adScriptSrc="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js" />
-  </div>
-  <div id="ad-container-3" className="ad-container">
-    <AdsterraAd adScriptSrc="//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js" />
-  </div>
-  <div id="ad-container-4" className="ad-container">
-    <AdsterraAd adScriptSrc="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js" />
-  </div>
-</Grid.Column>
           </Grid.Column>
           <Grid.Column></Grid.Column>
         </Grid.Row>
