@@ -1,8 +1,8 @@
 import Head from 'next/head';
+import Script from 'next/script';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Grid, Message, Segment, Icon, Image } from 'semantic-ui-react';
-import styles from '../styles/Home.module.css';
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
@@ -20,9 +20,8 @@ export default function Home() {
         setErr('Error generating short URL. Please try refreshing the page.');
       });
 
-    // Fetch visitor info and initial visitor count
-    fetchVisitorInfo();
-    fetchVisitorCount();
+    getVisitorInfo();
+    incrementVisitorCounter();
   }, []);
 
   async function shortenUrl(longUrl) {
@@ -43,6 +42,7 @@ export default function Home() {
       }
 
       const data = await response.json();
+      console.log('Bitly API Response:', data);
       return data.link;
     } catch (error) {
       console.error('Error in shortenUrl:', error);
@@ -50,7 +50,7 @@ export default function Home() {
     }
   }
 
-  async function fetchVisitorInfo() {
+  async function getVisitorInfo() {
     try {
       const response = await axios.get('https://ipinfo.io?token=e0f28ce078e7c9');
       setCountry(response.data.country);
@@ -59,30 +59,26 @@ export default function Home() {
     }
   }
 
-  async function fetchVisitorCount() {
-    try {
-      const response = await axios.get('/api/get-visitor-count');
-      setVisitorCount(response.data.count); // Assuming API returns { count: number }
-    } catch (error) {
-      console.error('Error fetching visitor count:', error);
-    }
-  }
-
   async function incrementVisitorCounter() {
     try {
       const response = await axios.post('/api/increment-counter');
-      setVisitorCount(prevCount => prevCount + 1); // Increment count locally
+      console.log('Increment Counter Response:', response.data);
+      setVisitorCount(response.data.count);
     } catch (error) {
       console.error('Error incrementing visitor counter:', error);
     }
   }
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
       </Head>
+      <Script
+        src="//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js"
+        strategy="afterInteractive"
+      />
       <Grid columns='equal' padded centered>
         <Grid.Row>
           <Grid.Column></Grid.Column>
@@ -125,10 +121,26 @@ export default function Home() {
               <p>Visitor Count: {visitorCount}</p>
               <p>Country: {country}</p>
             </Message>
+            <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
+            <p>Made with ♥️ by Ankush.</p>
+            <div style={{ margin: '20px 0' }}>
+              <Script
+                src="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js"
+                strategy="afterInteractive"
+              />
+              <div id="container-7935fdc40a369b1b8e7fcfd0f9435185"></div>
+            </div>
+            <div style={{ margin: '20px 0' }}>
+              <Script
+                src="https://controlaffliction.com/e2butenyvy?key=399aebd799b150e0683df07e9b033ae3"
+                strategy="afterInteractive"
+                async
+              />
+            </div>
           </Grid.Column>
           <Grid.Column></Grid.Column>
         </Grid.Row>
       </Grid>
     </div>
   );
-}
+                  }
