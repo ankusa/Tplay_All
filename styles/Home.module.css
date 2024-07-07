@@ -113,4 +113,16 @@
     width: 100%;
     flex-direction: column;
   }
+.ad-container {
+  /* Example styles, adjust as needed */
+  margin-top: 20px; /* Adjust spacing between ad containers */
+  padding: 10px;
+  background-color: #f0f0f0; /* Example background color */
+  border: 1px solid #ccc; /* Example border */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 250px; /* Ensure adequate height for ads */
+}
+
 }
