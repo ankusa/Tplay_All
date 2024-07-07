@@ -20,9 +20,9 @@ export default function Home() {
         setErr('Error generating short URL. Please try refreshing the page.');
       });
 
-    // Fetch visitor info and increment counter on component mount
+    // Fetch visitor info and initial visitor count
     getVisitorInfo();
-    incrementVisitorCounter();
+    fetchVisitorCount();
   }, []);
 
   async function shortenUrl(longUrl) {
@@ -56,6 +56,15 @@ export default function Home() {
       setCountry(response.data.country);
     } catch (error) {
       console.error('Error fetching visitor info:', error);
+    }
+  }
+
+  async function fetchVisitorCount() {
+    try {
+      const response = await axios.get('/api/get-visitor-count');
+      setVisitorCount(response.data.count);
+    } catch (error) {
+      console.error('Error fetching visitor count:', error);
     }
   }
 
