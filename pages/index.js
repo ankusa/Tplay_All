@@ -59,8 +59,8 @@ export default function Home() {
           </Grid.Row>
 
           <Grid.Row>
-            <Grid.Column computer={8} tablet={12} mobile={16}>
-              <div className="ad-container">
+            <Grid.Column computer={10} tablet={12} mobile={16}>
+              <div className="ad-container" id="ad-container-1">
                 <script
                   async
                   src="//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js"
@@ -107,7 +107,7 @@ export default function Home() {
 
           <Grid.Row>
             <Grid.Column computer={4} tablet={6} mobile={16}>
-              <div className="ad-container">
+              <div className="ad-container" id="ad-container-2">
                 <script
                   async
                   src="//controlaffliction.com/0fb1214380655d2af19d570b5ce86dd2/invoke.js"
@@ -116,7 +116,7 @@ export default function Home() {
               </div>
             </Grid.Column>
             <Grid.Column computer={4} tablet={6} mobile={16}>
-              <div className="ad-container">
+              <div className="ad-container" id="ad-container-3">
                 <script
                   async
                   src="//controlaffliction.com/0fb1214380655d2af19d570b5ce86dd2/invoke.js"
@@ -143,7 +143,7 @@ export default function Home() {
 
           <Grid.Row>
             <Grid.Column computer={8} tablet={12} mobile={16}>
-              <div className="ad-container">
+              <div className="ad-container" id="ad-container-4">
                 <script
                   async
                   src="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js"
@@ -171,4 +171,4 @@ export default function Home() {
       `}</style>
     </div>
   );
-                  }
+              }
