@@ -49,7 +49,6 @@ export default function Home() {
       <Head>
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
-        {/* Place any meta tags and other head content here */}
       </Head>
       <Grid columns='equal' padded centered>
         <Grid.Row>
@@ -94,24 +93,24 @@ export default function Home() {
             </Message>
             <p>Made with ♥️ by Ankush.</p>
             {/* Ad scripts */}
-            <div>
+            <div className="ad-container">
               <script
                 async
                 src="//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js"
                 type="text/javascript"
               />
             </div>
-            <div>
+            <div className="ad-container">
               <script
                 async
                 src="//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js"
                 type="text/javascript"
               />
             </div>
-            <div>
+            <div className="ad-container">
               <a href="https://controlaffliction.com/e2butenyvy?key=399aebd799b150e0683df07e9b033ae3">Direct Link</a>
             </div>
-            <div>
+            <div className="ad-container">
               <script
                 async
                 src="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js"
@@ -119,28 +118,28 @@ export default function Home() {
               />
               <div id="container-44ae6eacdda63238ece6e65059c59ec8" />
             </div>
-            <div>
+            <div className="ad-container">
               <script
                 async
                 src="//controlaffliction.com/3f0e0723cf1865a9cee0405e1afcf16c/invoke.js"
                 type="text/javascript"
               />
             </div>
-            <div>
+            <div className="ad-container">
               <script
                 async
                 src="//controlaffliction.com/0fb1214380655d2af19d570b5ce86dd2/invoke.js"
                 type="text/javascript"
               />
             </div>
-            <div>
+            <div className="ad-container">
               <script
                 async
                 src="//controlaffliction.com/e9fcb4b2cf8498ba499a0ce43674a64f/invoke.js"
                 type="text/javascript"
               />
             </div>
-            <div>
+            <div className="ad-container">
               <script
                 async
                 src="//controlaffliction.com/eb4bbddee9fda5a3f4abe66a8c3ab24e/invoke.js"
@@ -151,6 +150,14 @@ export default function Home() {
           <Grid.Column></Grid.Column>
         </Grid.Row>
       </Grid>
+      <style jsx>{`
+        .ad-container {
+          margin-bottom: 20px;
+        }
+        .message-container {
+          text-align: center;
+        }
+      `}</style>
     </div>
   );
                   }
