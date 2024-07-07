@@ -108,11 +108,12 @@ export default function Home() {
             <Message>
               <Message.Header><Icon name='world' /> Visitor Information</Message.Header>
               <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
-            <p>Made with ♥️ by Ankush.</p>
+              <p>Made with ♥️ by Ankush.</p>
+            </Message>
           </Grid.Column>
           <Grid.Column></Grid.Column>
         </Grid.Row>
       </Grid>
     </div>
   );
-                  }
+                      }
