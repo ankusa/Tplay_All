@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Grid, Message, Segment, Icon, Image } from 'semantic-ui-react';
+import * as gtag from '../lib/gtag';
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
@@ -17,6 +18,9 @@ export default function Home() {
         console.error('Error generating short URL:', error);
         setErr('Error generating short URL. Please try refreshing the page.');
       });
+
+    // Track page view
+    gtag.pageview(window.location.pathname);
   }, []);
 
   async function shortenUrl(longUrl) {
@@ -50,6 +54,19 @@ export default function Home() {
       <Head>
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
       </Head>
       <Grid columns='equal' padded centered>
         <Grid.Row>
@@ -98,4 +115,4 @@ export default function Home() {
       </Grid>
     </div>
   );
-                      }
+                  }
