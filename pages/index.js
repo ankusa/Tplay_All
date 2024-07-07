@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Grid, Message, Segment, Icon, Image } from 'semantic-ui-react';
+import '../styles/Home.module.css
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
