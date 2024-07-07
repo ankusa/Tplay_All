@@ -1,14 +1,11 @@
 import Head from 'next/head';
-import Script from 'next/script';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Grid, Message, Segment, Icon, Image } from 'semantic-ui-react';
-import * as gtag from '../lib/gtag';
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
   const [err, setErr] = useState("");
-  const [visitors, setVisitors] = useState(null);
 
   useEffect(() => {
     const url = `${window.location.origin.replace('localhost', '127.0.0.1')}/api/getM3u?sid=tplay_A&id=1028268934&sname=tataP&tkn=cheapgeeky.com`;
@@ -19,22 +16,7 @@ export default function Home() {
         console.error('Error generating short URL:', error);
         setErr('Error generating short URL. Please try refreshing the page.');
       });
-
-    // Track page view
-    gtag.pageview(window.location.pathname);
-
-    // Fetch visitors count
-    fetchVisitorsCount();
   }, []);
-
-  async function fetchVisitorsCount() {
-    try {
-      const response = await axios.get('/api/visitors');
-      setVisitors(response.data.count);
-    } catch (error) {
-      console.error('Error fetching visitors count:', error);
-    }
-  }
 
   async function shortenUrl(longUrl) {
     try {
@@ -62,50 +44,17 @@ export default function Home() {
     }
   }
 
-  console.log('Rendering Home component');
-
   return (
     <div>
       <Head>
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`} />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
-                page_path: window.location.pathname,
-              });
-            `,
-          }}
-        />
-        {/* Adsterra Scripts */}
-        <Script src="//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js" strategy="beforeInteractive" />
-        <Script src="//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js" strategy="beforeInteractive" />
       </Head>
       <Grid columns='equal' padded centered>
         <Grid.Row>
           <Grid.Column></Grid.Column>
           <Grid.Column computer={8} tablet={12} mobile={16}>
             <Segment>
-              {/* Banner 728x90 */}
-              <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-                <script type="text/javascript" dangerouslySetInnerHTML={{
-                  __html: `
-                    var atOptions = {
-                      'key' : '7f4afa6163e1c4f538d5ed0af889234b',
-                      'format' : 'iframe',
-                      'height' : 90,
-                      'width' : 728,
-                      'params' : {}
-                    };
-                  `
-                }} />
-                <Script src="//controlaffliction.com/7f4afa6163e1c4f538d5ed0af889234b/invoke.js" strategy="lazyOnload" />
-              </div>
               <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' centered size='big' alt='Tata Play' />
               <Message>
                 <Message.Header><Icon name='linkify' /> M3U Short URL:</Message.Header>
@@ -138,62 +87,108 @@ export default function Home() {
         <Grid.Row>
           <Grid.Column></Grid.Column>
           <Grid.Column textAlign='center' computer={8} tablet={12} mobile={16}>
-            {/* Banner 468x60 */}
-            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-              <script type="text/javascript" dangerouslySetInnerHTML={{
-                __html: `
-                  var atOptions = {
-                    'key' : '7935fdc40a369b1b8e7fcfd0f9435185',
-                    'format' : 'iframe',
-                    'height' : 60,
-                    'width' : 468,
-                    'params' : {}
-                  };
-                `
-              }} />
-              <Script src="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js" strategy="lazyOnload" />
-            </div>
             <Message>
               <Message.Header><Icon name='world' /> Visitor Information</Message.Header>
-              {visitors !== null ? (
-                <p>Total Visitors: {visitors}</p>
-              ) : (
-                <p>Loading visitors count...</p>
-              )}
               <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
-              <p>Made with ♥️ by Ankush.</p>
-              {/* Direct Link */}
-              <a href="https://controlaffliction.com/e2butenyvy?key=399aebd799b150e0683df07e9b033ae3" target="_blank" rel="noreferrer">Check out our latest offers!</a>
             </Message>
-          </Grid.Column>
-          <Grid.Column></Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column></Grid.Column>
-          <Grid.Column computer={8} tablet={12} mobile={16}>
-            {/* Native Banner */}
-            <div id="container-44ae6eacdda63238ece6e65059c59ec8"></div>
-            <Script async src="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js" strategy="lazyOnload" />
-          </Grid.Column>
-          <Grid.Column></Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column></Grid.Column>
-          <Grid.Column computer={8} tablet={12} mobile={16}>
-            {/* Banner 160x300 */}
-            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-              <script type="text/javascript" dangerouslySetInnerHTML={{
-                __html: `
+            <p>Made with ♥️ by Ankush.</p>
+            {/* Ad scripts */}
+            <div>
+              <script type="text/javascript">
+                {`
                   var atOptions = {
-                    'key' : '3f0e0723cf1865a9cee0405e1afcf16c',
-                    'format' : 'iframe',
-                    'height' : 300,
-                    'width' : 160,
-                    'params' : {}
+                    'key': '7f4afa6163e1c4f538d5ed0af889234b',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
                   };
-                `
-              }} />
-              <Script src="//controlaffliction.com/3f0e0723cf1865a9cee0405e1afcf16c/invoke.js" strategy="lazyOnload" />
+                `}
+              </script>
+              <script type="text/javascript" src="//controlaffliction.com/7f4afa6163e1c4f538d5ed0af889234b/invoke.js"></script>
+            </div>
+            <div>
+              <script type="text/javascript">
+                {`
+                  var atOptions = {
+                    'key': '7935fdc40a369b1b8e7fcfd0f9435185',
+                    'format': 'iframe',
+                    'height': 60,
+                    'width': 468,
+                    'params': {}
+                  };
+                `}
+              </script>
+              <script type="text/javascript" src="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js"></script>
+            </div>
+            <div>
+              <a href="https://controlaffliction.com/e2butenyvy?key=399aebd799b150e0683df07e9b033ae3">Direct Link</a>
+            </div>
+            <div>
+              <script type="text/javascript" src="//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js"></script>
+            </div>
+            <div>
+              <script type='text/javascript' src='//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js'></script>
+            </div>
+            <div>
+              <script async="async" data-cfasync="false" src="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js"></script>
+              <div id="container-44ae6eacdda63238ece6e65059c59ec8"></div>
+            </div>
+            <div>
+              <script type="text/javascript">
+                {`
+                  var atOptions = {
+                    'key': '3f0e0723cf1865a9cee0405e1afcf16c',
+                    'format': 'iframe',
+                    'height': 300,
+                    'width': 160,
+                    'params': {}
+                  };
+                `}
+              </script>
+              <script type="text/javascript" src="//controlaffliction.com/3f0e0723cf1865a9cee0405e1afcf16c/invoke.js"></script>
+            </div>
+            <div>
+              <script type="text/javascript">
+                {`
+                  var atOptions = {
+                    'key': '0fb1214380655d2af19d570b5ce86dd2',
+                    'format': 'iframe',
+                    'height': 600,
+                    'width': 160,
+                    'params': {}
+                  };
+                `}
+              </script>
+              <script type="text/javascript" src="//controlaffliction.com/0fb1214380655d2af19d570b5ce86dd2/invoke.js"></script>
+            </div>
+            <div>
+              <script type="text/javascript">
+                {`
+                  var atOptions = {
+                    'key': 'e9fcb4b2cf8498ba499a0ce43674a64f',
+                    'format': 'iframe',
+                    'height': 250,
+                    'width': 300,
+                    'params': {}
+                  };
+                `}
+              </script>
+              <script type="text/javascript" src="//controlaffliction.com/e9fcb4b2cf8498ba499a0ce43674a64f/invoke.js"></script>
+            </div>
+            <div>
+              <script type="text/javascript">
+                {`
+                  var atOptions = {
+                    'key': 'eb4bbd'react.js
+                    'format': 'iframe',
+                    'height': 50,
+                    'width': 320,
+                    'params': {}
+                  };
+                `}
+              </script>
+              <script type="text/javascript" src="//controlaffliction.com/eb4bbddee9fda5a3f4abe66a8c3ab24e/invoke.js"></script>
             </div>
           </Grid.Column>
           <Grid.Column></Grid.Column>
@@ -201,4 +196,4 @@ export default function Home() {
       </Grid>
     </div>
   );
-                          }
+}
