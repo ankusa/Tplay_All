@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Grid, Message, Segment, Icon, Image } from 'semantic-ui-react';
+import { Grid, Message, Segment, Icon, Image, Container } from 'semantic-ui-react';
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
@@ -50,6 +49,18 @@ export default function Home() {
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
       </Head>
+
+      {/* Header Ad */}
+      <Container textAlign='center'>
+        <div className="ad-container">
+          <script
+            async
+            src="//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js"
+            type="text/javascript"
+          />
+        </div>
+      </Container>
+
       <Grid columns='equal' padded centered>
         <Grid.Row>
           <Grid.Column></Grid.Column>
@@ -84,22 +95,11 @@ export default function Home() {
           </Grid.Column>
           <Grid.Column></Grid.Column>
         </Grid.Row>
+        
+        {/* Sidebar Ads */}
         <Grid.Row>
           <Grid.Column></Grid.Column>
-          <Grid.Column textAlign='center' computer={8} tablet={12} mobile={16}>
-            <Message>
-              <Message.Header><Icon name='world' /> Visitor Information</Message.Header>
-              <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
-            </Message>
-            <p>Made with ♥️ by Ankush.</p>
-            {/* Ad scripts */}
-            <div className="ad-container">
-              <script
-                async
-                src="//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js"
-                type="text/javascript"
-              />
-            </div>
+          <Grid.Column computer={4} tablet={6} mobile={8}>
             <div className="ad-container">
               <script
                 async
@@ -107,6 +107,30 @@ export default function Home() {
                 type="text/javascript"
               />
             </div>
+          </Grid.Column>
+          <Grid.Column computer={8} tablet={12} mobile={16}>
+            <Message>
+              <Message.Header><Icon name='world' /> Visitor Information</Message.Header>
+              <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
+            </Message>
+            <p>Made with ♥️ by Ankush.</p>
+          </Grid.Column>
+          <Grid.Column computer={4} tablet={6} mobile={8}>
+            <div className="ad-container">
+              <script
+                async
+                src="//controlaffliction.com/0fb1214380655d2af19d570b5ce86dd2/invoke.js"
+                type="text/javascript"
+              />
+            </div>
+          </Grid.Column>
+          <Grid.Column></Grid.Column>
+        </Grid.Row>
+        
+        {/* Footer Ads */}
+        <Grid.Row>
+          <Grid.Column></Grid.Column>
+          <Grid.Column textAlign='center' computer={8} tablet={12} mobile={16}>
             <div className="ad-container">
               <a href="https://controlaffliction.com/e2butenyvy?key=399aebd799b150e0683df07e9b033ae3">Direct Link</a>
             </div>
@@ -122,13 +146,6 @@ export default function Home() {
               <script
                 async
                 src="//controlaffliction.com/3f0e0723cf1865a9cee0405e1afcf16c/invoke.js"
-                type="text/javascript"
-              />
-            </div>
-            <div className="ad-container">
-              <script
-                async
-                src="//controlaffliction.com/0fb1214380655d2af19d570b5ce86dd2/invoke.js"
                 type="text/javascript"
               />
             </div>
@@ -153,6 +170,7 @@ export default function Home() {
       <style jsx>{`
         .ad-container {
           margin-bottom: 20px;
+          text-align: center;
         }
         .message-container {
           text-align: center;
