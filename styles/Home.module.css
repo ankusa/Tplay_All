@@ -1,4 +1,6 @@
-/* Place @import rules at the top */
+/* Home.module.css */
+
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .container {
@@ -15,20 +17,11 @@
   align-items: center;
 }
 
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+  color: #0070f3;
 }
 
 .title a {
@@ -42,21 +35,11 @@
   text-decoration: underline;
 }
 
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
-}
-
 .description {
   margin: 4rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
+  text-align: center;
 }
 
 .code {
@@ -116,16 +99,41 @@
     width: 100%;
     flex-direction: column;
   }
-.ad-container {
-  /* Example styles, adjust as needed */
-  margin-top: 20px; /* Adjust spacing between ad containers */
-  padding: 10px;
-  background-color: #f0f0f0; /* Example background color */
-  border: 1px solid #ccc; /* Example border */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 250px; /* Ensure adequate height for ads */
 }
 
+.menu {
+  background-color: #001f3f; /* Dark Blue */
+  padding: 1em 0;
+}
+
+.menu a {
+  color: white;
+  padding: 1em;
+}
+
+.menu a:hover {
+  background-color: #0070f3; /* Light Blue */
+}
+
+.header {
+  font-size: 2rem;
+  margin-bottom: 1em;
+  text-align: center;
+  color: #0070f3;
+}
+
+.segment {
+  background-color: #ffffff;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 2em;
+}
+
+.message {
+  margin: 2em 0;
+}
+
+.message p {
+  font-size: 1.25rem;
+  line-height: 1.5;
 }
