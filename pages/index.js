@@ -8,6 +8,7 @@ import * as gtag from '../lib/gtag';
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
   const [err, setErr] = useState("");
+  const [visitors, setVisitors] = useState(null);
 
   useEffect(() => {
     const url = `${window.location.origin.replace('localhost', '127.0.0.1')}/api/getM3u?sid=tplay_A&id=1028268934&sname=tataP&tkn=cheapgeeky.com`;
@@ -21,7 +22,19 @@ export default function Home() {
 
     // Track page view
     gtag.pageview(window.location.pathname);
+
+    // Fetch visitors count
+    fetchVisitorsCount();
   }, []);
+
+  async function fetchVisitorsCount() {
+    try {
+      const response = await axios.get('/api/visitors');
+      setVisitors(response.data.count);
+    } catch (error) {
+      console.error('Error fetching visitors count:', error);
+    }
+  }
 
   async function shortenUrl(longUrl) {
     try {
@@ -108,6 +121,12 @@ export default function Home() {
           <Grid.Column></Grid.Column>
           <Grid.Column textAlign='center' computer={8} tablet={12} mobile={16}>
             <Message>
+              <Message.Header><Icon name='world' /> Visitor Information</Message.Header>
+              {visitors !== null ? (
+                <p>Total Visitors: {visitors}</p>
+              ) : (
+                <p>Loading visitors count...</p>
+              )}
               <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
               <p>Made with ♥️ by Ankush.</p>
             </Message>
@@ -117,4 +136,4 @@ export default function Home() {
       </Grid>
     </div>
   );
-                  }
+                      }
