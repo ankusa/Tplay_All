@@ -7,10 +7,8 @@ import styles from '../styles/Home.module.css'; // Corrected import statement
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
   const [err, setErr] = useState("");
-  const [visitorCount, setVisitorCount] = useState(() => {
-    // Initialize visitor count from localStorage or 0 if not present
-    return parseInt(localStorage.getItem('visitorCount'), 10) || 0;
-  });
+  const [visitorCount, setVisitorCount] = useState(0); // Initialize with 0
+
   const [country, setCountry] = useState("");
 
   useEffect(() => {
@@ -32,11 +30,6 @@ export default function Home() {
     loadScript("//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js");
     loadScript("//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js");
   }, []);
-
-  useEffect(() => {
-    // Store visitor count in localStorage whenever it changes
-    localStorage.setItem('visitorCount', visitorCount.toString());
-  }, [visitorCount]);
 
   async function shortenUrl(longUrl) {
     try {
