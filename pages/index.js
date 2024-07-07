@@ -59,6 +59,18 @@ export default function Home() {
           </Grid.Row>
 
           <Grid.Row>
+            <Grid.Column computer={8} tablet={12} mobile={16}>
+              <div className="ad-container">
+                <script
+                  async
+                  src="//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js"
+                  type="text/javascript"
+                />
+              </div>
+            </Grid.Column>
+          </Grid.Row>
+
+          <Grid.Row>
             <Grid.Column computer={10} tablet={12} mobile={16}>
               <Segment>
                 <Header as='h2'>
@@ -94,26 +106,11 @@ export default function Home() {
           </Grid.Row>
 
           <Grid.Row>
-            <Grid.Column>
-              <Divider />
-              <Header as='h3' textAlign='center'>
-                <Icon name='world' />
-                Visitor Information
-              </Header>
-              <Button as='a' href="https://cheapgeeky.com" target="_blank" rel="noreferrer" color='blue' fluid>
-                <Icon name='external' />
-                Visit CheapGeeky
-              </Button>
-              <p style={{ textAlign: 'center', marginTop: '1em' }}>Made with ♥️ by Ankush.</p>
-            </Grid.Column>
-          </Grid.Row>
-          
-          <Grid.Row>
             <Grid.Column computer={4} tablet={6} mobile={16}>
               <div className="ad-container">
                 <script
                   async
-                  src="//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js"
+                  src="//controlaffliction.com/0fb1214380655d2af19d570b5ce86dd2/invoke.js"
                   type="text/javascript"
                 />
               </div>
@@ -126,6 +123,21 @@ export default function Home() {
                   type="text/javascript"
                 />
               </div>
+            </Grid.Column>
+          </Grid.Row>
+
+          <Grid.Row>
+            <Grid.Column>
+              <Divider />
+              <Header as='h3' textAlign='center'>
+                <Icon name='world' />
+                Visitor Information
+              </Header>
+              <Button as='a' href="https://cheapgeeky.com" target="_blank" rel="noreferrer" color='blue' fluid>
+                <Icon name='external' />
+                Visit CheapGeeky
+              </Button>
+              <p style={{ textAlign: 'center', marginTop: '1em' }}>Made with ♥️ by Ankush.</p>
             </Grid.Column>
           </Grid.Row>
 
