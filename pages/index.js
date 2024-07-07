@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { Container, Grid, Header, Icon, Image, Menu, Segment, Message } from 'semantic-ui-react';
-import styles from './Home.module.css';
+import styles from './styles/Home.module.css';
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
@@ -45,7 +45,7 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <Head>
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
@@ -65,7 +65,7 @@ export default function Home() {
           </Menu.Item>
         </Container>
       </Menu>
-      <Container className={styles.container}>
+      <Container className={styles.main}>
         <Grid centered>
           <Grid.Row>
             <Grid.Column width={12}>
