@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Grid, Message, Segment, Icon, Image } from 'semantic-ui-react';
-import AdsterraAd from '../components/AdsterraAd';  // Correct path
+import AdsterraAd from '../components/AdsterraAd';  // Ensure this path is correct
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
@@ -74,7 +74,6 @@ export default function Home() {
       <Head>
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
-    <script type='text/javascript' src='//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js'></script>
       </Head>
       <Grid columns='equal' padded centered>
         <Grid.Row>
