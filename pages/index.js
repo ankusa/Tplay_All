@@ -54,10 +54,7 @@ export default function Home() {
         <Grid centered>
           <Grid.Row>
             <Grid.Column>
-              <Header as='h1' textAlign='center'>
-                <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' size='large' />
-                TATA PLAY M3U Generator
-              </Header>
+              <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' size='huge' centered />
             </Grid.Column>
           </Grid.Row>
 
@@ -155,7 +152,11 @@ export default function Home() {
         .message-container {
           text-align: center;
         }
+        .ui.image.huge {
+          max-width: 400px;
+          margin: auto;
+        }
       `}</style>
     </div>
   );
-              }
+                  }
