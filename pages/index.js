@@ -85,9 +85,7 @@ export default function Home() {
           <Grid.Column computer={8} tablet={12} mobile={16}>
             <Segment>
               <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' centered size='big' alt='Tata Play' />
-          <script async="async" data-cfasync="false" src="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js"></script>
-<div id="container-44ae6eacdda63238ece6e65059c59ec8"></div>    
-          <Message>
+              <Message>
                 <Message.Header><Icon name='linkify' /> M3U Short URL:</Message.Header>
                 {shortUrl ? (
                   <p>
@@ -130,15 +128,7 @@ export default function Home() {
                 src="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js"
                 strategy="afterInteractive"
               />
-            </div>
-            <div style={{ margin: '20px 0' }}>
-              <Script
-                src="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js"
-                strategy="afterInteractive"
-                async
-                data-cfasync="false"
-              />
-              <div id="container-44ae6eacdda63238ece6e65059c59ec8"></div>
+              <div id="container-7935fdc40a369b1b8e7fcfd0f9435185"></div>
             </div>
             <div style={{ margin: '20px 0' }}>
               <Script
@@ -153,4 +143,4 @@ export default function Home() {
       </Grid>
     </div>
   );
-}
+                  }
