@@ -1,3 +1,6 @@
+/* Place @import rules at the top */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 .container {
   padding: 0 2rem;
 }
