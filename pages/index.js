@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Grid, Message, Segment, Icon, Image } from 'semantic-ui-react';
-import '../styles/Home.module.css
+import styles from '../styles/Home.module.css'; // Corrected import statement
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
@@ -48,7 +48,6 @@ export default function Home() {
       }
 
       const data = await response.json();
-      // Do not log sensitive data like data.link
       return data.link;
     } catch (error) {
       console.error('Error in shortenUrl:', error);
@@ -83,7 +82,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className={styles.container}> {/* Apply CSS class from module */}
       <Head>
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
