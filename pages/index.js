@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Container, Grid, Header, Icon, Image, Menu, Segment, Message } from 'semantic-ui-react';
+import styles from './Home.module.css';
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
@@ -50,7 +50,7 @@ export default function Home() {
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
       </Head>
-      <Menu fixed='top' inverted>
+      <Menu fixed='top' inverted className={styles.menu}>
         <Container>
           <Menu.Item header>
             <Image
@@ -65,15 +65,17 @@ export default function Home() {
           </Menu.Item>
         </Container>
       </Menu>
-      <Container style={{ marginTop: '7em' }}>
-        <Grid columns='equal' padded centered>
+      <Container className={styles.container}>
+        <Grid centered>
           <Grid.Row>
-            <Grid.Column></Grid.Column>
-            <Grid.Column computer={8} tablet={12} mobile={16}>
-              <Segment>
-                <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' centered size='big' alt='Tata Play' />
-                <Message>
-                  <Message.Header><Icon name='linkify' /> M3U Short URL:</Message.Header>
+            <Grid.Column width={12}>
+              <Segment className={styles.segment}>
+                <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' centered size='medium' alt='Tata Play' />
+                <Header as='h2' icon textAlign='center'>
+                  <Icon name='linkify' circular />
+                  <Header.Content>M3U Short URL</Header.Content>
+                </Header>
+                <Message className={styles.message}>
                   {shortUrl ? (
                     <p>
                       <a href={shortUrl} target="_blank" rel="noreferrer">{shortUrl}</a> 🎉
@@ -81,12 +83,8 @@ export default function Home() {
                   ) : (
                     <p>Generating short URL... ⏳</p>
                   )}
-                  <p>
-                    Use the M3U URL in the OTT Navigator or Tivimate app for all channels.
-                  </p>
-                  <p>
-                    Set data reload to 10 minutes and enjoy uninterrupted viewing!
-                  </p>
+                  <p>Use the M3U URL in the OTT Navigator or Tivimate app for all channels.</p>
+                  <p>Set data reload to 10 minutes and enjoy uninterrupted viewing!</p>
                   <p>The generated M3U URL is permanent and does not need to be refreshed every 24 hours. Enjoy!</p>
                   <p><strong>IMPORTANT:</strong> If you encounter an error with the generated URL, it might be due to an API issue. Simply wait for the API issue to be resolved.</p>
                 </Message>
@@ -98,32 +96,31 @@ export default function Home() {
                 )}
               </Segment>
             </Grid.Column>
-            <Grid.Column></Grid.Column>
           </Grid.Row>
         </Grid>
-        <Segment inverted vertical style={{ padding: '5em 0em' }}>
-          <Container>
-            <Grid divided inverted stackable>
-              <Grid.Row>
-                <Grid.Column width={7}>
-                  <Header as='h4' inverted>
-                    Tata Play M3U Generator
-                  </Header>
-                  <p>Made with ♥️ by Ankush.</p>
-                </Grid.Column>
-                <Grid.Column width={3}>
-                  <Header as='h4' inverted>
-                    Links
-                  </Header>
-                  <Menu.Item as='a' href="https://cheapgeeky.com" target="_blank" rel="noreferrer">
-                    Visit CheapGeeky
-                  </Menu.Item>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Container>
-        </Segment>
       </Container>
+      <Segment inverted vertical style={{ padding: '5em 0em' }} className={styles.footer}>
+        <Container>
+          <Grid divided inverted stackable>
+            <Grid.Row>
+              <Grid.Column width={7}>
+                <Header as='h4' inverted>
+                  Tata Play M3U Generator
+                </Header>
+                <p>Made with ♥️ by Ankush.</p>
+              </Grid.Column>
+              <Grid.Column width={3}>
+                <Header as='h4' inverted>
+                  Links
+                </Header>
+                <Menu.Item as='a' href="https://cheapgeeky.com" target="_blank" rel="noreferrer">
+                  Visit CheapGeeky
+                </Menu.Item>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
+      </Segment>
     </div>
   );
-                    }
+                        }
