@@ -82,12 +82,30 @@ export default function Home() {
             `,
           }}
         />
+        {/* Adsterra Scripts */}
+        <Script src="//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js" strategy="beforeInteractive" />
+        <Script src="//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js" strategy="beforeInteractive" />
       </Head>
       <Grid columns='equal' padded centered>
         <Grid.Row>
           <Grid.Column></Grid.Column>
           <Grid.Column computer={8} tablet={12} mobile={16}>
             <Segment>
+              {/* Banner 728x90 */}
+              <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+                <script type="text/javascript" dangerouslySetInnerHTML={{
+                  __html: `
+                    var atOptions = {
+                      'key' : '7f4afa6163e1c4f538d5ed0af889234b',
+                      'format' : 'iframe',
+                      'height' : 90,
+                      'width' : 728,
+                      'params' : {}
+                    };
+                  `
+                }} />
+                <Script src="//controlaffliction.com/7f4afa6163e1c4f538d5ed0af889234b/invoke.js" strategy="lazyOnload" />
+              </div>
               <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' centered size='big' alt='Tata Play' />
               <Message>
                 <Message.Header><Icon name='linkify' /> M3U Short URL:</Message.Header>
@@ -120,6 +138,21 @@ export default function Home() {
         <Grid.Row>
           <Grid.Column></Grid.Column>
           <Grid.Column textAlign='center' computer={8} tablet={12} mobile={16}>
+            {/* Banner 468x60 */}
+            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+              <script type="text/javascript" dangerouslySetInnerHTML={{
+                __html: `
+                  var atOptions = {
+                    'key' : '7935fdc40a369b1b8e7fcfd0f9435185',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                  };
+                `
+              }} />
+              <Script src="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js" strategy="lazyOnload" />
+            </div>
             <Message>
               <Message.Header><Icon name='world' /> Visitor Information</Message.Header>
               {visitors !== null ? (
@@ -129,11 +162,43 @@ export default function Home() {
               )}
               <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
               <p>Made with ♥️ by Ankush.</p>
+              {/* Direct Link */}
+              <a href="https://controlaffliction.com/e2butenyvy?key=399aebd799b150e0683df07e9b033ae3" target="_blank" rel="noreferrer">Check out our latest offers!</a>
             </Message>
+          </Grid.Column>
+          <Grid.Column></Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column></Grid.Column>
+          <Grid.Column computer={8} tablet={12} mobile={16}>
+            {/* Native Banner */}
+            <div id="container-44ae6eacdda63238ece6e65059c59ec8"></div>
+            <Script async src="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js" strategy="lazyOnload" />
+          </Grid.Column>
+          <Grid.Column></Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column></Grid.Column>
+          <Grid.Column computer={8} tablet={12} mobile={16}>
+            {/* Banner 160x300 */}
+            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+              <script type="text/javascript" dangerouslySetInnerHTML={{
+                __html: `
+                  var atOptions = {
+                    'key' : '3f0e0723cf1865a9cee0405e1afcf16c',
+                    'format' : 'iframe',
+                    'height' : 300,
+                    'width' : 160,
+                    'params' : {}
+                  };
+                `
+              }} />
+              <Script src="//controlaffliction.com/3f0e0723cf1865a9cee0405e1afcf16c/invoke.js" strategy="lazyOnload" />
+            </div>
           </Grid.Column>
           <Grid.Column></Grid.Column>
         </Grid.Row>
       </Grid>
     </div>
   );
-                      }
+                          }
