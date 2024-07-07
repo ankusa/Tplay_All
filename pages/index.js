@@ -55,7 +55,7 @@ export default function Home() {
           <Menu.Item header>
             <Image
               size='mini'
-              src='/logo.png'
+              src='/public/Tata_Play_2022_logo.svg'
               style={{ marginRight: '1.5em' }}
             />
             Tata Play
