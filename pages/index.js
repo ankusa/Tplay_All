@@ -47,7 +47,7 @@ export default function Home() {
       }
 
       const data = await response.json();
-      console.log('Bitly API Response:', data);
+      // Do not log sensitive data like data.link
       return data.link;
     } catch (error) {
       console.error('Error in shortenUrl:', error);
@@ -67,7 +67,6 @@ export default function Home() {
   async function incrementVisitorCounter() {
     try {
       const response = await axios.post('/api/increment-counter');
-      console.log('Increment Counter Response:', response.data);
       setVisitorCount(response.data.count);
     } catch (error) {
       console.error('Error incrementing visitor counter:', error);
