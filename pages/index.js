@@ -8,7 +8,6 @@ export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
   const [err, setErr] = useState("");
   const [visitorCount, setVisitorCount] = useState(0); // Initialize with 0
-
   const [country, setCountry] = useState("");
 
   useEffect(() => {
@@ -21,14 +20,9 @@ export default function Home() {
         setErr('Error generating short URL. Please try refreshing the page.');
       });
 
+    // Fetch visitor info and increment counter on component mount
     getVisitorInfo();
     incrementVisitorCounter();
-
-    // Dynamically load Adsterra scripts
-    loadScript("//controlaffliction.com/7f4afa6163e1c4f538d5ed0af889234b/invoke.js");
-    loadScript("//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js");
-    loadScript("//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js");
-    loadScript("//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js");
   }, []);
 
   async function shortenUrl(longUrl) {
@@ -74,14 +68,6 @@ export default function Home() {
     }
   }
 
-  // Function to dynamically load scripts
-  const loadScript = (src) => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = true;
-    document.body.appendChild(script);
-  };
-
   return (
     <div className={styles.container}> {/* Apply CSS class from module */}
       <Head>
@@ -119,11 +105,6 @@ export default function Home() {
                 </Message>
               )}
             </Segment>
-            {/* Placeholder for Ad containers */}
-            <div id="ad-container-1"></div>
-            <div id="ad-container-2"></div>
-            <div id="ad-container-3"></div>
-            <div id="ad-container-4"></div>
           </Grid.Column>
           <Grid.Column></Grid.Column>
         </Grid.Row>
@@ -135,8 +116,6 @@ export default function Home() {
               <p>Visitor Count: {visitorCount}</p>
               <p>Country: {country}</p>
             </Message>
-            <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
-            <p>Made with ♥️ by Ankush.</p>
           </Grid.Column>
           <Grid.Column></Grid.Column>
         </Grid.Row>
