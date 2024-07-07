@@ -167,7 +167,7 @@ export default function Home() {
           <Grid.Column></Grid.Column>
         </Grid.Row>
       </Grid>
-      <style jsx global>{`
+      <style jsx>{`
         .ad-container {
           margin-bottom: 20px;
           text-align: center;
@@ -178,4 +178,4 @@ export default function Home() {
       `}</style>
     </div>
   );
-                  }
+            }
