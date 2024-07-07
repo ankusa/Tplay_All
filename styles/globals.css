@@ -1,9 +1,12 @@
+/* globals.css */
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #f8f9fa;
 }
 
 a {
@@ -13,4 +16,29 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.menu {
+  background-color: #001f3f !important; /* Dark Blue */
+}
+
+.container {
+  margin-top: 7em; /* Adjust for fixed menu height */
+}
+
+.footer {
+  background-color: #001f3f;
+  color: white;
+  padding: 2em 0;
+  text-align: center;
+}
+
+.footer a {
+  color: white;
+  margin: 0 1em;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }
