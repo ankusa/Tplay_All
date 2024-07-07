@@ -49,6 +49,7 @@ export default function Home() {
       <Head>
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
+        {/* Place any meta tags and other head content here */}
       </Head>
       <Grid columns='equal' padded centered>
         <Grid.Row>
@@ -94,101 +95,57 @@ export default function Home() {
             <p>Made with ♥️ by Ankush.</p>
             {/* Ad scripts */}
             <div>
-              <script type="text/javascript">
-                {`
-                  var atOptions = {
-                    'key': '7f4afa6163e1c4f538d5ed0af889234b',
-                    'format': 'iframe',
-                    'height': 90,
-                    'width': 728,
-                    'params': {}
-                  };
-                `}
-              </script>
-              <script type="text/javascript" src="//controlaffliction.com/7f4afa6163e1c4f538d5ed0af889234b/invoke.js"></script>
+              <script
+                async
+                src="//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js"
+                type="text/javascript"
+              />
             </div>
             <div>
-              <script type="text/javascript">
-                {`
-                  var atOptions = {
-                    'key': '7935fdc40a369b1b8e7fcfd0f9435185',
-                    'format': 'iframe',
-                    'height': 60,
-                    'width': 468,
-                    'params': {}
-                  };
-                `}
-              </script>
-              <script type="text/javascript" src="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js"></script>
+              <script
+                async
+                src="//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js"
+                type="text/javascript"
+              />
             </div>
             <div>
               <a href="https://controlaffliction.com/e2butenyvy?key=399aebd799b150e0683df07e9b033ae3">Direct Link</a>
             </div>
             <div>
-              <script type="text/javascript" src="//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js"></script>
+              <script
+                async
+                src="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js"
+                type="text/javascript"
+              />
+              <div id="container-44ae6eacdda63238ece6e65059c59ec8" />
             </div>
             <div>
-              <script type='text/javascript' src='//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js'></script>
+              <script
+                async
+                src="//controlaffliction.com/3f0e0723cf1865a9cee0405e1afcf16c/invoke.js"
+                type="text/javascript"
+              />
             </div>
             <div>
-              <script async="async" data-cfasync="false" src="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js"></script>
-              <div id="container-44ae6eacdda63238ece6e65059c59ec8"></div>
+              <script
+                async
+                src="//controlaffliction.com/0fb1214380655d2af19d570b5ce86dd2/invoke.js"
+                type="text/javascript"
+              />
             </div>
             <div>
-              <script type="text/javascript">
-                {`
-                  var atOptions = {
-                    'key': '3f0e0723cf1865a9cee0405e1afcf16c',
-                    'format': 'iframe',
-                    'height': 300,
-                    'width': 160,
-                    'params': {}
-                  };
-                `}
-              </script>
-              <script type="text/javascript" src="//controlaffliction.com/3f0e0723cf1865a9cee0405e1afcf16c/invoke.js"></script>
+              <script
+                async
+                src="//controlaffliction.com/e9fcb4b2cf8498ba499a0ce43674a64f/invoke.js"
+                type="text/javascript"
+              />
             </div>
             <div>
-              <script type="text/javascript">
-                {`
-                  var atOptions = {
-                    'key': '0fb1214380655d2af19d570b5ce86dd2',
-                    'format': 'iframe',
-                    'height': 600,
-                    'width': 160,
-                    'params': {}
-                  };
-                `}
-              </script>
-              <script type="text/javascript" src="//controlaffliction.com/0fb1214380655d2af19d570b5ce86dd2/invoke.js"></script>
-            </div>
-            <div>
-              <script type="text/javascript">
-                {`
-                  var atOptions = {
-                    'key': 'e9fcb4b2cf8498ba499a0ce43674a64f',
-                    'format': 'iframe',
-                    'height': 250,
-                    'width': 300,
-                    'params': {}
-                  };
-                `}
-              </script>
-              <script type="text/javascript" src="//controlaffliction.com/e9fcb4b2cf8498ba499a0ce43674a64f/invoke.js"></script>
-            </div>
-            <div>
-              <script type="text/javascript">
-                {`
-                  var atOptions = {
-                    'key': 'eb4bbd'react.js
-                    'format': 'iframe',
-                    'height': 50,
-                    'width': 320,
-                    'params': {}
-                  };
-                `}
-              </script>
-              <script type="text/javascript" src="//controlaffliction.com/eb4bbddee9fda5a3f4abe66a8c3ab24e/invoke.js"></script>
+              <script
+                async
+                src="//controlaffliction.com/eb4bbddee9fda5a3f4abe66a8c3ab24e/invoke.js"
+                type="text/javascript"
+              />
             </div>
           </Grid.Column>
           <Grid.Column></Grid.Column>
@@ -196,4 +153,4 @@ export default function Home() {
       </Grid>
     </div>
   );
-}
+                  }
