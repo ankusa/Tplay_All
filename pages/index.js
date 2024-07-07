@@ -97,38 +97,4 @@ export default function Home() {
                   Set data reload to 10 minutes and enjoy uninterrupted viewing!
                 </p>
                 <p>The generated M3U URL is permanent and does not need to be refreshed every 24 hours. Enjoy!</p>
-                <p><strong>IMPORTANT:</strong> If you encounter an error with the generated URL, it might be due to an API issue. Simply wait for the API issue to be resolved.</p>
-              </Message>
-              {err && (
-                <Message negative>
-                  <Message.Header><Icon name='exclamation circle' /> Error</Message.Header>
-                  <p>{err}</p>
-                </Message>
-              )}
-            </Segment>
-            {/* Adsterra Ad */}
-            <AdsterraAd adScriptSrc="//controlaffliction.com/7f4afa6163e1c4f538d5ed0af889234b/invoke.js" adContainerId="ad-container-1" />
-          </Grid.Column>
-          <Grid.Column></Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column></Grid.Column>
-          <Grid.Column textAlign='center' computer={8} tablet={12} mobile={16}>
-            <Message>
-              <Message.Header><Icon name='world' /> Visitor Information</Message.Header>
-              <p>Visitor Count: {visitorCount}</p>
-              <p>Country: {country}</p>
-            </Message>
-            <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
-            <p>Made with ♥️ by Ankush.</p>
-            {/* Adsterra Ads */}
-            <AdsterraAd adScriptSrc="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js" adContainerId="ad-container-2" />
-            <AdsterraAd adScriptSrc="//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js" adContainerId="ad-container-3" />
-            <AdsterraAd adScriptSrc="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js" adContainerId="ad-container-4" />
-          </Grid.Column>
-          <Grid.Column></Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </div>
-  );
-}
+                <p><strong>IMPORTANT:</strong> If you encounter an error with the generated URL, it might be due to an API issue. Simply wait for the API issue
