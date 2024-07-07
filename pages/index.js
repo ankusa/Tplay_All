@@ -2,12 +2,12 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Grid, Message, Segment, Icon, Image } from 'semantic-ui-react';
-import styles from '../styles/Home.module.css'; // Corrected import statement
+import styles from '../styles/Home.module.css';
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
   const [err, setErr] = useState("");
-  const [visitorCount, setVisitorCount] = useState(0); // Initialize with 0
+  const [visitorCount, setVisitorCount] = useState(0);
   const [country, setCountry] = useState("");
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function Home() {
       });
 
     // Fetch visitor info and initial visitor count
-    getVisitorInfo();
+    fetchVisitorInfo();
     fetchVisitorCount();
   }, []);
 
@@ -50,7 +50,7 @@ export default function Home() {
     }
   }
 
-  async function getVisitorInfo() {
+  async function fetchVisitorInfo() {
     try {
       const response = await axios.get('https://ipinfo.io?token=e0f28ce078e7c9');
       setCountry(response.data.country);
@@ -62,7 +62,7 @@ export default function Home() {
   async function fetchVisitorCount() {
     try {
       const response = await axios.get('/api/get-visitor-count');
-      setVisitorCount(response.data.count);
+      setVisitorCount(response.data.count); // Assuming API returns { count: number }
     } catch (error) {
       console.error('Error fetching visitor count:', error);
     }
@@ -78,7 +78,7 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.container}> {/* Apply CSS class from module */}
+    <div className={styles.container}>
       <Head>
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
