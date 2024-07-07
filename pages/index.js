@@ -7,8 +7,6 @@ import { Grid, Message, Segment, Icon, Image } from 'semantic-ui-react';
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
   const [err, setErr] = useState("");
-  const [visitorCount, setVisitorCount] = useState(0);
-  const [country, setCountry] = useState("");
 
   useEffect(() => {
     const url = `${window.location.origin.replace('localhost', '127.0.0.1')}/api/getM3u?sid=tplay_A&id=1028268934&sname=tataP&tkn=cheapgeeky.com`;
@@ -19,9 +17,6 @@ export default function Home() {
         console.error('Error generating short URL:', error);
         setErr('Error generating short URL. Please try refreshing the page.');
       });
-
-    getVisitorInfo();
-    incrementVisitorCounter();
   }, []);
 
   async function shortenUrl(longUrl) {
@@ -50,35 +45,12 @@ export default function Home() {
     }
   }
 
-  async function getVisitorInfo() {
-    try {
-      const response = await axios.get('https://ipinfo.io?token=e0f28ce078e7c9');
-      setCountry(response.data.country);
-    } catch (error) {
-      console.error('Error fetching visitor info:', error);
-    }
-  }
-
-  async function incrementVisitorCounter() {
-    try {
-      const response = await axios.post('/api/increment-counter');
-      console.log('Increment Counter Response:', response.data);
-      setVisitorCount(response.data.count);
-    } catch (error) {
-      console.error('Error incrementing visitor counter:', error);
-    }
-  }
-
   return (
     <div>
       <Head>
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
       </Head>
-      <Script
-        src="//controlaffliction.com/dd/2e/d4/dd2ed46f3a77fc9150b15baae76d2cdb.js"
-        strategy="afterInteractive"
-      />
       <Grid columns='equal' padded centered>
         <Grid.Row>
           <Grid.Column></Grid.Column>
@@ -118,29 +90,12 @@ export default function Home() {
           <Grid.Column textAlign='center' computer={8} tablet={12} mobile={16}>
             <Message>
               <Message.Header><Icon name='world' /> Visitor Information</Message.Header>
-              <p>Visitor Count: {visitorCount}</p>
-              <p>Country: {country}</p>
-            </Message>
-            <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
+              <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
             <p>Made with ♥️ by Ankush.</p>
-            <div style={{ margin: '20px 0' }}>
-              <Script
-                src="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js"
-                strategy="afterInteractive"
-              />
-              <div id="container-7935fdc40a369b1b8e7fcfd0f9435185"></div>
-            </div>
-            <div style={{ margin: '20px 0' }}>
-              <Script
-                src="https://controlaffliction.com/e2butenyvy?key=399aebd799b150e0683df07e9b033ae3"
-                strategy="afterInteractive"
-                async
-              />
-            </div>
           </Grid.Column>
           <Grid.Column></Grid.Column>
         </Grid.Row>
       </Grid>
     </div>
   );
-                  }
+                      }
