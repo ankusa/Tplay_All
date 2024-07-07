@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Grid, Message, Segment, Icon, Image } from 'semantic-ui-react';
-import AdsterraAd from '../components/AdsterraAd';  // Ensure this path is correct
+import AdsterraAd from '../components/AdsterraAd';  // Correct path to AdsterraAd component
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
@@ -69,64 +69,66 @@ export default function Home() {
     }
   }
 
-  // Correct JSX structure example
-return (
-  <div>
-    <Head>
-      <title>TATA PLAY COPY PASTE M3U</title>
-      <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
-      {/* Additional head elements */}
-    </Head>
-    <Grid columns='equal' padded centered>
-      <Grid.Row>
-        {/* Grid content */}
-        <Grid.Column></Grid.Column>
-        <Grid.Column computer={8} tablet={12} mobile={16}>
-          <Segment>
-            {/* Segment content */}
-            <Message>
-              {/* Message content */}
-              <Message.Header><Icon name='linkify' /> M3U Short URL:</Message.Header>
-              {shortUrl ? (
+  return (
+    <div>
+      <Head>
+        <title>TATA PLAY COPY PASTE M3U</title>
+        <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
+      </Head>
+      <Grid columns='equal' padded centered>
+        <Grid.Row>
+          <Grid.Column></Grid.Column>
+          <Grid.Column computer={8} tablet={12} mobile={16}>
+            <Segment>
+              <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' centered size='big' alt='Tata Play' />
+              <Message>
+                <Message.Header><Icon name='linkify' /> M3U Short URL:</Message.Header>
+                {shortUrl ? (
+                  <p>
+                    <a href={shortUrl} target="_blank" rel="noreferrer">{shortUrl}</a> 🎉
+                  </p>
+                ) : (
+                  <p>Generating short URL... ⏳</p>
+                )}
                 <p>
-                  <a href={shortUrl} target="_blank" rel="noreferrer">{shortUrl}</a> 🎉
+                  Use the M3U URL in the OTT Navigator or Tivimate app for all channels.
                 </p>
-              ) : (
-                <p>Generating short URL... ⏳</p>
-              )}
-              {/* More message content */}
-            </Message>
-            {err && (
-              <Message negative>
-                <Message.Header><Icon name='exclamation circle' /> Error</Message.Header>
-                <p>{err}</p>
+                <p>
+                  Set data reload to 10 minutes and enjoy uninterrupted viewing!
+                </p>
+                <p>The generated M3U URL is permanent and does not need to be refreshed every 24 hours. Enjoy!</p>
+                <p><strong>IMPORTANT:</strong> If you encounter an error with the generated URL, it might be due to an API issue. Simply wait for the API issue to be resolved.</p>
               </Message>
-            )}
-          </Segment>
-          {/* Adsterra Ad */}
-          <AdsterraAd adScriptSrc="//controlaffliction.com/7f4afa6163e1c4f538d5ed0af889234b/invoke.js" adContainerId="ad-container-1" />
-        </Grid.Column>
-        <Grid.Column></Grid.Column>
-      </Grid.Row>
-      <Grid.Row>
-        {/* Second grid row content */}
-        <Grid.Column></Grid.Column>
-        <Grid.Column textAlign='center' computer={8} tablet={12} mobile={16}>
-          <Message>
-            {/* Message in the second row */}
-            <Message.Header><Icon name='world' /> Visitor Information</Message.Header>
-            <p>Visitor Count: {visitorCount}</p>
-            <p>Country: {country}</p>
-          </Message>
-          {/* Additional content */}
-          {/* Adsterra Ads */}
-          <AdsterraAd adScriptSrc="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js" adContainerId="ad-container-2" />
-          <AdsterraAd adScriptSrc="//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js" adContainerId="ad-container-3" />
-          <AdsterraAd adScriptSrc="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js" adContainerId="ad-container-4" />
-          {/* End of second row content */}
-        </Grid.Column>
-        <Grid.Column></Grid.Column>
-      </Grid.Row>
-    </Grid>
-  </div>
-);
+              {err && (
+                <Message negative>
+                  <Message.Header><Icon name='exclamation circle' /> Error</Message.Header>
+                  <p>{err}</p>
+                </Message>
+              )}
+            </Segment>
+            {/* Adsterra Ad */}
+            <AdsterraAd adScriptSrc="//controlaffliction.com/7f4afa6163e1c4f538d5ed0af889234b/invoke.js" adContainerId="ad-container-1" />
+          </Grid.Column>
+          <Grid.Column></Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column></Grid.Column>
+          <Grid.Column textAlign='center' computer={8} tablet={12} mobile={16}>
+            <Message>
+              <Message.Header><Icon name='world' /> Visitor Information</Message.Header>
+              <p>Visitor Count: {visitorCount}</p>
+              <p>Country: {country}</p>
+            </Message>
+            <a href="https://cheapgeeky.com" target="_blank" rel="noreferrer"><Icon name='external' /> Visit CheapGeeky</a>
+            <p>Made with ♥️ by Ankush.</p>
+            {/* Adsterra Ads */}
+            <AdsterraAd adScriptSrc="//controlaffliction.com/7935fdc40a369b1b8e7fcfd0f9435185/invoke.js" adContainerId="ad-container-2" />
+            <AdsterraAd adScriptSrc="//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js" adContainerId="ad-container-3" />
+            <AdsterraAd adScriptSrc="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js" adContainerId="ad-container-4" />
+          </Grid.Column>
+          <Grid.Column></Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </div>
+  );
+}
