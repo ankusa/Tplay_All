@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { Container, Grid, Header, Icon, Image, Menu, Segment, Message } from 'semantic-ui-react';
-import styles from './styles/Home.module.css';
+import styles from '../styles/Home.module.css';
 
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
