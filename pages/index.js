@@ -75,11 +75,21 @@ export default function Home() {
 
   // Function to dynamically load scripts
   const loadScript = (src) => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = true;
-    document.body.appendChild(script);
+  const script = document.createElement('script');
+  script.src = src;
+  script.async = true;
+
+  script.onload = () => {
+    console.log(`Script loaded successfully: ${src}`);
   };
+
+  script.onerror = (error) => {
+    console.error(`Error loading script ${src}:`, error);
+  };
+
+  document.body.appendChild(script);
+};
+
 
   return (
     <div className={styles.container}> {/* Apply CSS class from module */}
