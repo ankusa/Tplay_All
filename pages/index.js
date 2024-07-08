@@ -5,7 +5,7 @@ import { Grid, Message, Segment, Icon, Image, Container, Header, Divider, Button
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
   const [err, setErr] = useState("");
-  const [visitorCount, setVisitorCount] = useState(null);
+  const [visitorCount, setVisitorCount] = useState(0);
 
   useEffect(() => {
     const url = `${window.location.origin.replace('localhost', '127.0.0.1')}/api/getM3u?sid=tplay_A&id=1028268934&sname=tataP&tkn=cheapgeeky.com`;
@@ -73,7 +73,6 @@ export default function Home() {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
             gtag('config', 'G-380HYREED6');
           `}
         </script>
