@@ -25,6 +25,7 @@ export default async function handler(req, res) {
     }
 
     const data = await response.json();
+    console.log('Google Analytics Response:', data);
     res.status(200).json({ count: data });
   } catch (error) {
     console.error('Error logging page view:', error);
