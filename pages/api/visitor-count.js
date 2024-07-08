@@ -2,7 +2,7 @@
 export default async function handler(req, res) {
   const measurementId = 'G-380HYREED6';
   const apiSecret = 'hfo3v2u-QaOi5zrvXLxWUQ';
-  
+
   try {
     const response = await fetch(`https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${apiSecret}`, {
       method: 'POST',
