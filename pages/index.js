@@ -5,6 +5,7 @@ import { Grid, Message, Segment, Icon, Image, Container, Header, Divider, Button
 export default function Home() {
   const [shortUrl, setShortUrl] = useState("");
   const [err, setErr] = useState("");
+  const [visitorCount, setVisitorCount] = useState(null);
 
   useEffect(() => {
     const url = `${window.location.origin.replace('localhost', '127.0.0.1')}/api/getM3u?sid=tplay_A&id=1028268934&sname=tataP&tkn=cheapgeeky.com`;
@@ -15,6 +16,8 @@ export default function Home() {
         console.error('Error generating short URL:', error);
         setErr('Error generating short URL. Please try refreshing the page.');
       });
+
+    fetchVisitorCount();
   }, []);
 
   async function shortenUrl(longUrl) {
@@ -43,6 +46,19 @@ export default function Home() {
     }
   }
 
+  async function fetchVisitorCount() {
+    // Fetch the visitor count from your server or Google Analytics API
+    // This is just a placeholder, you need to implement the actual fetch logic
+    const count = await fetchVisitorCountFromAPI();
+    setVisitorCount(count);
+  }
+
+  async function fetchVisitorCountFromAPI() {
+    // Implement the actual API call to get the visitor count
+    // Example with a mock response
+    return 1234; // Replace with actual logic
+  }
+
   return (
     <div>
       <Head>
@@ -53,6 +69,16 @@ export default function Home() {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4278346376625601"
           crossorigin="anonymous"
         ></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GOOGLE_ANALYTICS_ID"></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-MVX0LHMYVP');
+          `}
+        </script>
       </Head>
 
       <Container text>
@@ -121,6 +147,7 @@ export default function Home() {
                 <Icon name='world' />
                 Visitor Information
               </Header>
+              <p style={{ textAlign: 'center', marginTop: '1em' }}>Current Visitor Count: {visitorCount}</p>
               <Button as='a' href="https://cheapgeeky.com" target="_blank" rel="noreferrer" color='blue' fluid>
                 <Icon name='external' />
                 Visit CheapGeeky
