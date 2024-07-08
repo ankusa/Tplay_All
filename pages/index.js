@@ -46,20 +46,21 @@ export default function Home() {
     }
   }
 
-  async function fetchVisitorCount() {
-    try {
-      const response = await fetch('/api/visitor-count');
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      console.log('Visitor Count:', data);
-      setVisitorCount(data.count || 'No visitor count data');
-    } catch (error) {
-      console.error('Error fetching visitor count:', error);
-      setVisitorCount('Error fetching visitor count');
+ async function fetchVisitorCount() {
+  try {
+    const response = await fetch('/api/visitor-count');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
+    const data = await response.json();
+    console.log('Visitor Count:', data);
+    setVisitorCount(data.count || 'No visitor count data');
+  } catch (error) {
+    console.error('Error fetching visitor count:', error);
+    setVisitorCount('Error fetching visitor count');
   }
+}
+
 
   return (
     <div>
