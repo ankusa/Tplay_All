@@ -48,6 +48,11 @@ export default function Home() {
       <Head>
         <title>TATA PLAY COPY PASTE M3U</title>
         <meta name="description" content="Easiest way to generate a Tata Play IPTV (m3u) playlist." />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4278346376625601"
+          crossorigin="anonymous"
+        ></script>
       </Head>
 
       <Container text>
@@ -55,18 +60,6 @@ export default function Home() {
           <Grid.Row>
             <Grid.Column>
               <Image src='https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Play_2022_logo.svg' size='huge' centered />
-            </Grid.Column>
-          </Grid.Row>
-
-          <Grid.Row>
-            <Grid.Column computer={10} tablet={12} mobile={16}>
-              <div className="ad-container" id="ad-container-1">
-                <script
-                  async
-                  src="//controlaffliction.com/84/f9/d8/84f9d89ff5bccd06e0d241d0a278b798.js"
-                  type="text/javascript"
-                />
-              </div>
             </Grid.Column>
           </Grid.Row>
 
@@ -107,12 +100,16 @@ export default function Home() {
 
           <Grid.Row>
             <Grid.Column computer={10} tablet={12} mobile={16}>
-              <div className="ad-container" id="ad-container-2">
-                <script
-                  async
-                  src="//controlaffliction.com/0fb1214380655d2af19d570b5ce86dd2/invoke.js"
-                  type="text/javascript"
-                />
+              <div className="ad-container">
+                <ins className="adsbygoogle"
+                  style={{ display: 'block', textAlign: 'center' }}
+                  data-ad-client="ca-pub-4278346376625601"
+                  data-ad-slot="1234567890"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+                <script>
+                  {`(adsbygoogle = window.adsbygoogle || []).push({});`}
+                </script>
               </div>
             </Grid.Column>
           </Grid.Row>
@@ -134,13 +131,16 @@ export default function Home() {
 
           <Grid.Row>
             <Grid.Column computer={10} tablet={12} mobile={16}>
-              <div className="ad-container" id="ad-container-3">
-                <script
-                  async
-                  src="//controlaffliction.com/44ae6eacdda63238ece6e65059c59ec8/invoke.js"
-                  type="text/javascript"
-                />
-                <div id="container-44ae6eacdda63238ece6e65059c59ec8" />
+              <div className="ad-container">
+                <ins className="adsbygoogle"
+                  style={{ display: 'block', textAlign: 'center' }}
+                  data-ad-client="ca-pub-4278346376625601"
+                  data-ad-slot="1234567890"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+                <script>
+                  {`(adsbygoogle = window.adsbygoogle || []).push({});`}
+                </script>
               </div>
             </Grid.Column>
           </Grid.Row>
@@ -162,4 +162,4 @@ export default function Home() {
       `}</style>
     </div>
   );
-              }
+}
