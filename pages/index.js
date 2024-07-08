@@ -47,16 +47,14 @@ export default function Home() {
   }
 
   async function fetchVisitorCount() {
-    // Fetch the visitor count from your server or Google Analytics API
-    // This is just a placeholder, you need to implement the actual fetch logic
-    const count = await fetchVisitorCountFromAPI();
-    setVisitorCount(count);
-  }
-
-  async function fetchVisitorCountFromAPI() {
-    // Implement the actual API call to get the visitor count
-    // Example with a mock response
-    return 1234; // Replace with actual logic
+    try {
+      const response = await fetch('/api/visitor-count');
+      const data = await response.json();
+      setVisitorCount(data.count);
+    } catch (error) {
+      console.error('Error fetching visitor count:', error);
+      setVisitorCount('Error fetching visitor count');
+    }
   }
 
   return (
@@ -69,14 +67,14 @@ export default function Home() {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4278346376625601"
           crossorigin="anonymous"
         ></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GOOGLE_ANALYTICS_ID"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-380HYREED6"></script>
         <script>
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'G-MVX0LHMYVP');
+            gtag('config', 'G-380HYREED6');
           `}
         </script>
       </Head>
