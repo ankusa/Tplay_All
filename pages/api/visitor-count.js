@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   const apiSecret = 'hfo3v2u-QaOi5zrvXLxWUQ';
   
   try {
-    const response = await fetch(`https://www.google-analytics.com/mp/collect?measurement_id=${G-380HYREED6}&api_secret=${hfo3v2u-QaOi5zrvXLxWUQ}`, {
+    const response = await fetch(`https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${apiSecret}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
